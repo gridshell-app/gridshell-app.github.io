@@ -1,0 +1,54 @@
+/* Slightly smaller main content text. Headings scale down with it too,
+   since Material sizes them in em relative to this context - but the
+   header, logo, and sidebar (sized off the root font-size) are untouched. */
+.md-typeset {
+  font-size: 0.7rem;
+}
+
+/* Taller header, bigger logo (default logo is only 1.2rem tall). Anchored
+   to the flex container, not the title, since the title is hidden below. */
+.md-header__inner {
+  min-height: 3.2rem;
+}
+
+.md-header__button.md-logo img {
+  height: 2.2rem;
+}
+
+/* Differentiate top-level nav sections (App / Library / Legal) from leaf links */
+.md-nav__item--section > .md-nav__link {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.65rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Links and the active nav item default to --md-primary-fg-color, which is
+   now white - Material also hardcodes a blue fallback specifically for
+   light primaries, so redefining the variable alone isn't enough; target
+   the classes directly instead. */
+.md-typeset a,
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+  color: var(--md-accent-fg-color) !important;
+}
+
+/* Hide the header title (including the site-name/page-title swap on
+   scroll) - the logo alone carries the brand now it's a wordmark. Kept
+   in the flex layout (visibility, not display) since it's also the
+   spacer that pushes search/icons to the right edge of the header. */
+.md-header__title {
+  visibility: hidden;
+}
+
+/* Search box reads too wide at 100% - scale the expanded overlay to 80%. */
+@media screen and (min-width: 60em) and (max-width: 76.234375em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    width: 18.72rem;
+  }
+}
+@media screen and (min-width: 76.25em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    width: 27.52rem;
+  }
+}

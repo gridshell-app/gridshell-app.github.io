@@ -1,0 +1,30 @@
+site_name: GridShell
+site_description: A real terminal, live-bound to a Google Sheets spreadsheet.
+site_url: https://gridshell.app/
+docs_dir: docs-site-coming-soon
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+  palette:
+    primary: white
+    accent: green
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+nav:
+  - Coming soon: index.md
