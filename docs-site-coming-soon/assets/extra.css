@@ -46,6 +46,11 @@
   display: block;
 }
 
+/* Drawer toggle before the (wide, wordmark) logo, so it stays pinned left. */
+.md-header__button.md-icon[for="__drawer"] {
+  order: -1;
+}
+
 /* Logo is already a wordmark - hide the drawer's own duplicate text label. */
 .md-nav--primary > .md-nav__title {
   visibility: hidden;
