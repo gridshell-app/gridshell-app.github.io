@@ -41,6 +41,19 @@
   visibility: hidden;
 }
 
+/* Keep the logo in the mobile header too (Material hides it below 1220px). */
+.md-header__button.md-logo {
+  display: block;
+}
+
+/* Logo is already a wordmark - hide the drawer's own duplicate text label. */
+.md-nav--primary > .md-nav__title {
+  visibility: hidden;
+}
+.md-nav--primary > .md-nav__title .md-logo {
+  visibility: visible;
+}
+
 /* Search box reads too wide at 100% - scale the expanded overlay to 80%. */
 @media screen and (min-width: 60em) and (max-width: 76.234375em) {
   [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {

@@ -2,6 +2,7 @@ site_name: GridShell
 site_description: A real terminal, live-bound to a Google Sheets spreadsheet.
 site_url: https://gridshell.app/
 docs_dir: docs-site-coming-soon
+copyright: "&copy; 2026 The GridShell developers"
 
 theme:
   name: material
