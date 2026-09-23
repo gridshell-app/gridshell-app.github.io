@@ -1,6 +1,6 @@
 # Support / Contact
 
-- **Report an issue or request a feature**: [GitHub repository](#) *(link to be added once the repository is public)*.
+- **Report an issue or request a feature**: [GitHub Issues](https://github.com/gridshell-app/gridshell/issues).
 - **Documentation**: you're reading it - this site.
 - **Contact**: gridshell.app@gmail.com
 

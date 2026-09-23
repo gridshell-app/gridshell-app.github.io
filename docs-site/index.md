@@ -32,4 +32,4 @@ GridShell is provided as-is, with no warranty of any kind - see the [Terms of Se
 - [Troubleshooting / FAQ](troubleshooting.md)
 - [Roadmap](roadmap.md) - what's planned, and what isn't available yet.
 - [License](legal/license.md) - MIT for the server/library, closed source for the app.
-- [GitHub](#) · [Contact / Support](support.md)
+- [GitHub](https://github.com/gridshell-app/gridshell) · [Contact / Support](support.md)
