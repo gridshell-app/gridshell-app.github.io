@@ -66,6 +66,44 @@ grid.run_batch([
 grid.call("someNewTool", {"foo": "bar"})
 ```
 
+## Reference
+
+### `SheetsClient(...)`
+
+| Parameter | Default | Notes |
+|---|---|---|
+| `host` | `"localhost"` | Server address. |
+| `port` | `3000` | Must match the `gridshell-server` you're targeting. |
+| `wss` | `False` | Connect over `wss://` instead of `ws://`. |
+| `session` | `None` | Falls back to `$GRIDSHELL_SESSION`. Explicit value always wins. See [Which spreadsheet does this connect to?](#which-spreadsheet-does-this-connect-to) above. |
+| `session_key` | `None` | Falls back to `$GRIDSHELL_SESSION_KEY`. Required alongside an explicit `session`. |
+| `token` | `None` | Falls back to `$GRIDSHELL_AUTH_TOKEN`. Required whenever the target server was started with a token (the default). |
+| `default_timeout` | `300` (seconds) | Narrowed automatically after connecting, to match the server's real `runBatch` time budget plus margin. |
+
+### `get_values(range=None, sheet=None, timeout=None)`
+
+Read a range's values, as a 2D list. `range=None` reads the current selection instead - `sheet` isn't valid together with `range=None` (see [Working with the current selection](#working-with-the-current-selection) above). `timeout` overrides `default_timeout` for this call only.
+
+### `set_values(values, range=None, sheet=None, timeout=None)`
+
+Write `values` (a 2D list of rows, or a flat list treated as one row) into `range`, or into the current selection if `range=None` (same `sheet` restriction as `get_values`).
+
+### `append_row(values, sheet=None, timeout=None)`
+
+Append one row (a flat list) after the end of `sheet`'s existing data, or the active sheet if `sheet=None`.
+
+### `run_batch(ops, timeout=None)`
+
+Run a list of `{"chain": [...]}` structured-op entries. See [Beyond the built-in methods](#beyond-the-built-in-methods) above and [MCP](mcp.md#runbatch) for the chain grammar.
+
+### `call(tool, params=None, timeout=None)`
+
+Raw escape hatch - invoke any tool by name with a params dict, including tools added to the server after this library shipped. Connects lazily on first use if not already connected.
+
+### `close()`
+
+Closes the connection. Also available as a context manager (`with SheetsClient(...) as grid:`), which connects on entry and closes on exit.
+
 ## Errors
 
 | Exception | When |

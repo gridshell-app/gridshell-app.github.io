@@ -47,6 +47,7 @@ Naming a session isn't enough on its own. The server also requires `GRIDSHELL_SE
 | `setValues` | Write a 2D array of values into a range. |
 | `appendRow` | Append one row to the end of a sheet's data, no separate lookup for "where does the data end" needed. |
 | `runBatch` | Everything else: formulas, formatting, charts, conditional formatting, pivot tables, multiple operations in one call. |
+| `runBatchGuide` | Reference only, no arguments, no spreadsheet call made - returns `runBatch`'s full usage guide (the `__chain`/`__enum` builder-value pattern, `index`/`chartId` lookups, worked examples for conditional formatting, charts, and pivot tables). |
 
 **Prefer `runBatch`/the dedicated tools over repeated individual calls for bulk operations.** This isn't just about atomicity - each individual, non-batched call pays its own full round-trip to Sheets. Fifty one-by-one writes can take minutes; the same data as one `runBatch` call stays fast.
 
@@ -66,7 +67,7 @@ Runs one or more chains of method calls against the live spreadsheet, submitted 
 - **Acting on a specific existing object** (a chart, pivot table, image already on the sheet) - a chain step can be `{"index": N}` (indexing into the array the previous step returned) instead of a method call. Charts specifically also support `{"chartId": "..."}`, which is stable across calls even if other charts are added, removed, or reordered.
 - **If a batch is too large, hits a restriction, or a step fails partway through**, the response reports how far it got (`nextIndex`) - retry only what's left, not the whole batch. A chain's steps are real writes as they happen, so a later step failing doesn't undo earlier ones in the same chain; check `sideEffectsApplied`/`stepIndex` in the error rather than assuming nothing happened.
 
-The full JSON Schema for `runBatch`'s input is generated directly from the tool's own definition and will be published as a standalone reference - until then, the shape above (plus `gridshell-mcp`'s own tool description, visible to any MCP client) is authoritative.
+The full JSON Schema for `runBatch`'s input is generated directly from the tool's own definition and will be published as a standalone reference - until then, the shape above (plus `gridshell-mcp`'s own tool description, visible to any MCP client) is authoritative. For the `__chain`/`__enum` pattern and worked examples in full, call the `runBatchGuide` tool directly rather than relying on this page - it's kept in sync with the actual tool code, this page's summary might not be.
 
 ## Customizing
 

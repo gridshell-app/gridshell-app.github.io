@@ -18,7 +18,7 @@ You agree not to use GridShell to:
 
 - Access, modify, or exfiltrate data you're not authorized to access, including another person's spreadsheet reached through a shared server or session.
 - Violate Google's own terms governing Workspace Marketplace apps, Apps Script, or the Sheets API ([Google Apps Script Additional Terms](https://developers.google.com/apps-script/terms)), or any applicable law.
-- Use the shell GridShell gives an agent access to for anything you wouldn't otherwise be authorized to do on the machine running the server, including attacking or gaining unauthorized access to other systems.
+- Do anything with the shell GridShell gives access to that you wouldn't otherwise be authorized to do on the machine running the server, including attacking or gaining unauthorized access to other systems.
 
 ## Third-party services
 
@@ -38,7 +38,7 @@ GridShell is provided as-is, with no warranty of any kind, express or implied - 
 
 ## Limitation of liability
 
-GridShell is self-hosted software. You run the server yourself, on infrastructure you control, and you connect it to an AI agent of your choosing. **GridShell's developer assumes no liability for actions taken by an AI agent through GridShell, whether on the server side or the app side** - including, without limitation, actions that modify, delete, or expose data in your spreadsheet, or actions taken by a shell process the server spawned. You are solely responsible for what you grant the agent access to, what you ask it to do, and the outcome.
+GridShell is self-hosted software. You run the server yourself, on infrastructure you control, and you connect it to an AI agent, script, or process of your choosing. **GridShell's developer assumes no liability for actions taken by an AI agent, script, or process through GridShell, whether on the server side or the app side** - including, without limitation, actions that modify, delete, or expose data in your spreadsheet, or actions taken by a shell process the server spawned. You are solely responsible for what you grant access to, what you ask it to do, and the outcome.
 
 This is a direct consequence of the architecture, not a disclaimer of convenience: GridShell (the developer) has no visibility into, or control over, what happens on a server you run yourself.
 
@@ -48,7 +48,7 @@ GridShell does provide a set of guardrails on top of this boundary, see [App Set
 
 ## Indemnification
 
-You agree to indemnify and hold the developer harmless from any claim, damage, or expense (including reasonable legal fees) arising from your use of GridShell, your violation of these terms, or content/actions passed through the AI agent you connected to it.
+You agree to indemnify and hold the developer harmless from any claim, damage, or expense (including reasonable legal fees) arising from your use of GridShell, your violation of these terms, or content/actions passed through the agent, script, or process you connected to it.
 
 ## Termination
 

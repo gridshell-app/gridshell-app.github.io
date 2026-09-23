@@ -1,7 +1,7 @@
 site_name: GridShell
 site_description: A real terminal, live-bound to a Google Sheets spreadsheet.
 site_url: https://gridshell.app/
-docs_dir: docs-site-coming-soon
+docs_dir: docs-site
 copyright: "&copy; 2026 The GridShell developers"
 
 theme:
@@ -28,4 +28,19 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Coming soon: index.md
+  - Introduction: index.md
+  - App:
+      - Quick Start: app/quick-start.md
+      - Settings & Limitations: app/settings-and-limitations.md
+  - Library:
+      - Installation: library/installation.md
+      - Server: library/server.md
+      - MCP: library/mcp.md
+      - Python Client: library/python-client.md
+  - Troubleshooting / FAQ: troubleshooting.md
+  - Roadmap: roadmap.md
+  - Legal:
+      - License: legal/license.md
+      - Privacy Policy: legal/privacy-policy.md
+      - Terms of Service: legal/terms-of-service.md
+  - Support: support.md
