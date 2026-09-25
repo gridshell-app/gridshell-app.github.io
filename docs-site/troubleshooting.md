@@ -6,8 +6,8 @@ On Windows/Chrome, `ws://localhost` connections can take a couple of seconds due
 **The app refuses a `ws://` address for a remote server, with an error about a blocked connection.**
 Browsers block a plain `ws://` connection from an `https://`-loaded page (Google Sheets is always loaded over HTTPS), except to `localhost`/`127.0.0.1`/`[::1]` - this is a browser-level "mixed content" restriction, not something GridShell can override. The app checks for this itself before even attempting to connect, so it surfaces as a clear error rather than a silent hang. Use `wss://` with a valid certificate on the server (either the server terminates TLS itself with `--wss --cert-path --key-path`, or sits behind a reverse proxy that does).
 
-**`pip install gridshell` or `gridshell-mcp` fails, or import errors mention `mcp`.**
-Check your Python version - `python3 --version`. The `mcp` SDK dependency has never supported Python below 3.10; this is especially common to hit on macOS, where the system Python is often older.
+**`pip install gridshell` or `gridshell-mcp` fails, or import errors mention `mcp` or `websockets`.**
+Check your Python version - `python3 --version`. GridShell needs Python 3.11 or later, because its `websockets` dependency doesn't support anything older.
 
 **"Address already in use" / the server won't start on the port I expected.**
 Something else is already listening on that port. Pick a different one with `--port`.
