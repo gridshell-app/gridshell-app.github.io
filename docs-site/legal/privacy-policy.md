@@ -11,7 +11,7 @@
 
 The app is authorized for the following scopes:
 
-- `spreadsheets.currentonly` - access to the contents of the one spreadsheet you have open when you run the app (cell values, formulas, formatting, charts, and so on), and only that spreadsheet. The app cannot see or touch any other file in your Google account. This content may include personal data, if you have put personal data in the spreadsheet. Google describes this scope as allowing a spreadsheet to be viewed, modified and shared with other users; the app itself does not share spreadsheets or change who has access to them.
+- `spreadsheets.currentonly` - access to the contents of the one spreadsheet you have open when you run the app (cell values, formulas, formatting, charts, and so on), and only that spreadsheet. The app cannot see or touch any other file in your Google account. This content may include personal data, if you have put personal data in the spreadsheet.
 - `script.container.ui` - permission to show the sidebar and dialog the app's interface is built from, to run the app's code in your browser, and to receive what you enter into them. What you enter in Settings is saved as described under "Data retention and deletion". What you type in the terminal goes from your browser directly to your own server; it does not pass through the developer.
 - `userinfo.email` and `userinfo.profile` - basic account information (your name, email address, and profile picture). These scopes are included by default for every app listed on the Google Workspace Marketplace, which is why Google's install screen lists them. The app does not read, use, store, or transfer this information.
 
