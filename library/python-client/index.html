@@ -1,0 +1,1375 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A real terminal, live-bound to a Google Sheets spreadsheet.">
+      
+      
+      
+        <link rel="canonical" href="https://gridshell.app/library/python-client/">
+      
+      
+        <link rel="prev" href="../mcp/">
+      
+      
+        <link rel="next" href="../../troubleshooting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Python Client - GridShell</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-client" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GridShell" class="md-header__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GridShell
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python Client
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GridShell" class="md-nav__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    GridShell
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/settings-and-limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings & Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Client
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quickstart
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-the-current-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working with the current selection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-a-server-that-requires-a-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting to a server that requires a token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-spreadsheet-does-this-connect-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which spreadsheet does this connect to?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-the-built-in-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond the built-in methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sheetsclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SheetsClient(...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_valuesrangenone-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_values(range=None, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_valuesvalues-rangenone-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_values(values, range=None, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append_rowvalues-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        append_row(values, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_batchops-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run_batch(ops, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calltool-paramsnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        call(tool, params=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting / FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms-of-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terms of Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quickstart
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-the-current-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working with the current selection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-a-server-that-requires-a-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connecting to a server that requires a token
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-spreadsheet-does-this-connect-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which spreadsheet does this connect to?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-the-built-in-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond the built-in methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sheetsclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SheetsClient(...)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_valuesrangenone-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_values(range=None, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_valuesvalues-rangenone-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_values(values, range=None, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append_rowvalues-sheetnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        append_row(values, sheet=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_batchops-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        run_batch(ops, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calltool-paramsnone-timeoutnone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        call(tool, params=None, timeout=None)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        close()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-client">Python Client<a class="headerlink" href="#python-client" title="Permanent link">&para;</a></h1>
+<p><code>SheetsClient</code> speaks the same <code>/mcp</code> WebSocket protocol <code>gridshell-mcp</code> uses, directly from a script or REPL - no MCP SDK, no stdio, no LLM involved.</p>
+<h2 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">gridshell</span><span class="w"> </span><span class="kn">import</span> <span class="n">SheetsClient</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">SheetsClient</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">3012</span><span class="p">)</span>          <span class="c1"># or host=, wss=True, session=&lt;id&gt;</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="s2">"A1:C10"</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_values</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="nb">range</span><span class="o">=</span><span class="s2">"A1:B2"</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_values</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="s2">"A1:C1"</span><span class="p">)</span>      <span class="c1"># a flat list is also accepted, as one row</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">append_row</span><span class="p">([</span><span class="s2">"Widget"</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"2026-09-06"</span><span class="p">])</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>Or as a context manager:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">SheetsClient</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">3012</span><span class="p">)</span> <span class="k">as</span> <span class="n">grid</span><span class="p">:</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="s2">"A1:C10"</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="working-with-the-current-selection">Working with the current selection<a class="headerlink" href="#working-with-the-current-selection" title="Permanent link">&para;</a></h2>
+<p>Omit <code>range</code> to read or write whatever's currently selected in the sheet:</p>
+<div class="highlight"><pre><span></span><code><span class="n">grid</span><span class="o">.</span><span class="n">get_values</span><span class="p">()</span>                 <span class="c1"># current selection's values</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_values</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>       <span class="c1"># overwrite the current selection</span>
+</code></pre></div>
+<p><code>sheet=</code> isn't valid together with an omitted <code>range</code> - the selection is always whatever's active in the UI, on whichever sheet that is. Pass an explicit <code>range</code> (and optionally <code>sheet</code>) to target a specific sheet.</p>
+<h2 id="connecting-to-a-server-that-requires-a-token">Connecting to a server that requires a token<a class="headerlink" href="#connecting-to-a-server-that-requires-a-token" title="Permanent link">&para;</a></h2>
+<p>A token is required by default (see <a href="../server/">Server</a>). Pass <code>token=</code> explicitly, or leave it unset and set <code>GRIDSHELL_AUTH_TOKEN</code> in the environment - already set automatically inside a document's own embedded shell, so a script launched from there needs nothing extra. A wrong or missing token surfaces as <code>GridShellConnectionError: Rejected by the server: invalid or missing token</code>. Check the value against <code>--copy-token</code>'s clipboard copy or <code>~/.gridshell/token</code>.</p>
+<h2 id="which-spreadsheet-does-this-connect-to">Which spreadsheet does this connect to?<a class="headerlink" href="#which-spreadsheet-does-this-connect-to" title="Permanent link">&para;</a></h2>
+<p>Each open spreadsheet runs its own, independent GridShell session - <code>/mcp</code> always relays to one specific document, never a mix of several.</p>
+<ul>
+<li><strong>Only one document currently connected, no <code>session</code> given</strong>: the server falls back to it automatically.</li>
+<li><strong>More than one connected, no <code>session</code> given</strong>: the server refuses the call (<code>GridShellError: Multiple clients connected and no session was specified</code>) rather than guessing.</li>
+<li><strong>Running from inside a document's own embedded terminal</strong>: the library reads <code>GRIDSHELL_SESSION</code> from the environment automatically, the same way <code>gridshell-mcp</code>/Claude Code does, and always targets that document.</li>
+<li><strong>Running externally, targeting a specific document among several</strong>: pass <code>session=&lt;id&gt;</code> explicitly; it always wins over the environment variable. Get the id by running <code>echo $env:GRIDSHELL_SESSION</code> (PowerShell) inside that document's own embedded shell. An explicit <code>session</code> also needs its matching <code>session_key</code> (the server rejects a session id on its own as unproven) - pass <code>session_key=&lt;key&gt;</code>, or leave it unset and set <code>GRIDSHELL_SESSION_KEY</code> in the environment instead, same <code>echo $env:GRIDSHELL_SESSION_KEY</code> pattern. Both env vars are already set together inside that document's own embedded shell, so a script launched from there needs neither passed explicitly.</li>
+</ul>
+<h2 id="beyond-the-built-in-methods">Beyond the built-in methods<a class="headerlink" href="#beyond-the-built-in-methods" title="Permanent link">&para;</a></h2>
+<p><code>run_batch()</code> is the generic structured-chain escape hatch - the same grammar described in <a href="../mcp/#runbatch">MCP</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">grid</span><span class="o">.</span><span class="n">run_batch</span><span class="p">([</span>
+    <span class="p">{</span><span class="s2">"chain"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"getActiveSheet"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">[]},</span>
+        <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"getRange"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"D14"</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">"method"</span><span class="p">:</span> <span class="s2">"setFormula"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"=D14*(1+Assumptions!$B$5)"</span><span class="p">]},</span>
+    <span class="p">]},</span>
+<span class="p">])</span>
+</code></pre></div>
+<p><code>call(tool, params)</code> invokes any tool by name, including ones added to the server's tool list after this library shipped:</p>
+<div class="highlight"><pre><span></span><code><span class="n">grid</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">"someNewTool"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">})</span>
+</code></pre></div>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<h3 id="sheetsclient"><code>SheetsClient(...)</code><a class="headerlink" href="#sheetsclient" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host</code></td>
+<td><code>"localhost"</code></td>
+<td>Server address.</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td><code>3000</code></td>
+<td>Must match the <code>gridshell-server</code> you're targeting.</td>
+</tr>
+<tr>
+<td><code>wss</code></td>
+<td><code>False</code></td>
+<td>Connect over <code>wss://</code> instead of <code>ws://</code>.</td>
+</tr>
+<tr>
+<td><code>session</code></td>
+<td><code>None</code></td>
+<td>Falls back to <code>$GRIDSHELL_SESSION</code>. Explicit value always wins. See <a href="#which-spreadsheet-does-this-connect-to">Which spreadsheet does this connect to?</a> above.</td>
+</tr>
+<tr>
+<td><code>session_key</code></td>
+<td><code>None</code></td>
+<td>Falls back to <code>$GRIDSHELL_SESSION_KEY</code>. Required alongside an explicit <code>session</code>.</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><code>None</code></td>
+<td>Falls back to <code>$GRIDSHELL_AUTH_TOKEN</code>. Required whenever the target server was started with a token (the default).</td>
+</tr>
+<tr>
+<td><code>default_timeout</code></td>
+<td><code>300</code> (seconds)</td>
+<td>Narrowed automatically after connecting, to match the server's real <code>runBatch</code> time budget plus margin.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get_valuesrangenone-sheetnone-timeoutnone"><code>get_values(range=None, sheet=None, timeout=None)</code><a class="headerlink" href="#get_valuesrangenone-sheetnone-timeoutnone" title="Permanent link">&para;</a></h3>
+<p>Read a range's values, as a 2D list. <code>range=None</code> reads the current selection instead - <code>sheet</code> isn't valid together with <code>range=None</code> (see <a href="#working-with-the-current-selection">Working with the current selection</a> above). <code>timeout</code> overrides <code>default_timeout</code> for this call only.</p>
+<h3 id="set_valuesvalues-rangenone-sheetnone-timeoutnone"><code>set_values(values, range=None, sheet=None, timeout=None)</code><a class="headerlink" href="#set_valuesvalues-rangenone-sheetnone-timeoutnone" title="Permanent link">&para;</a></h3>
+<p>Write <code>values</code> (a 2D list of rows, or a flat list treated as one row) into <code>range</code>, or into the current selection if <code>range=None</code> (same <code>sheet</code> restriction as <code>get_values</code>).</p>
+<h3 id="append_rowvalues-sheetnone-timeoutnone"><code>append_row(values, sheet=None, timeout=None)</code><a class="headerlink" href="#append_rowvalues-sheetnone-timeoutnone" title="Permanent link">&para;</a></h3>
+<p>Append one row (a flat list) after the end of <code>sheet</code>'s existing data, or the active sheet if <code>sheet=None</code>.</p>
+<h3 id="run_batchops-timeoutnone"><code>run_batch(ops, timeout=None)</code><a class="headerlink" href="#run_batchops-timeoutnone" title="Permanent link">&para;</a></h3>
+<p>Run a list of <code>{"chain": [...]}</code> structured-op entries. See <a href="#beyond-the-built-in-methods">Beyond the built-in methods</a> above and <a href="../mcp/#runbatch">MCP</a> for the chain grammar.</p>
+<h3 id="calltool-paramsnone-timeoutnone"><code>call(tool, params=None, timeout=None)</code><a class="headerlink" href="#calltool-paramsnone-timeoutnone" title="Permanent link">&para;</a></h3>
+<p>Raw escape hatch - invoke any tool by name with a params dict, including tools added to the server after this library shipped. Connects lazily on first use if not already connected.</p>
+<h3 id="close"><code>close()</code><a class="headerlink" href="#close" title="Permanent link">&para;</a></h3>
+<p>Closes the connection. Also available as a context manager (<code>with SheetsClient(...) as grid:</code>), which connects on entry and closes on exit.</p>
+<h2 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GridShellConnectionError</code></td>
+<td>Couldn't connect, or the connection dropped mid-call.</td>
+</tr>
+<tr>
+<td><code>GridShellTimeoutError</code></td>
+<td>No response within the call's timeout.</td>
+</tr>
+<tr>
+<td><code>GridShellError</code></td>
+<td>The server (or the spreadsheet it relayed to) returned an error, e.g. a deny-list block, a failed <code>runBatch</code> step, etc. The message is passed through unchanged.</td>
+</tr>
+</tbody>
+</table>
+<p>All three subclass <code>GridShellException</code>.</p>
+<h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h2>
+<p><code>SheetsClient</code> is deliberately narrow: one raw escape hatch (<code>call</code>) plus a handful of convenience methods, no plugin/registration system. Compose your own functions on top of these primitives for anything more specific.</p>
+<p>Only Sheets is implemented today. <code>SheetsClient</code> is named explicitly (not a bare <code>Client</code>) so an Excel client can be added later on the same transport, without a breaking rename of this one.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 The GridShell developers
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

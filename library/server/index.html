@@ -1,0 +1,1252 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A real terminal, live-bound to a Google Sheets spreadsheet.">
+      
+      
+      
+        <link rel="canonical" href="https://gridshell.app/library/server/">
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../mcp/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Server - GridShell</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#server" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GridShell" class="md-header__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GridShell
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Server
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GridShell" class="md-nav__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    GridShell
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/settings-and-limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings & Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security &amp; deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encrypting-a-local-server-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypting a local server too
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardening-a-remote-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardening a remote deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell privileges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stopping-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stopping the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-your-own-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing your own server
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting / FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms-of-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terms of Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; deployment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security &amp; deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encrypting-a-local-server-too" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypting a local server too
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardening-a-remote-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardening a remote deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell privileges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stopping-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stopping the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform support
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-your-own-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing your own server
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h1>
+<p><code>gridshell-server</code> is the PTY + Sheets bridge + MCP relay a self-hosted GridShell backend runs. It exposes three plain WebSocket endpoints:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/terminal</code></td>
+<td>xterm.js ↔ PTY - session reattach, idle-kill, output buffering.</td>
+</tr>
+<tr>
+<td><code>/host</code></td>
+<td>The Sheets sidebar/dialog connects here to open/close/kill shells.</td>
+</tr>
+<tr>
+<td><code>/mcp</code></td>
+<td><code>gridshell-mcp</code> connects here to relay tool calls.</td>
+</tr>
+</tbody>
+</table>
+<p><code>terminal-server</code> is shipped <strong>open source, as a reference implementation</strong> - it's not a maintained SaaS backend. If your organization needs to run it inside its own trusted runtime with custom controls, you're expected to adapt it rather than depend on it unmodified; see "Writing your own server" below.</p>
+<h2 id="running-it">Running it<a class="headerlink" href="#running-it" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>gridshell-server<span class="w"> </span><span class="o">[</span>--port<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="o">[</span>--host<span class="w"> </span>HOST<span class="o">]</span><span class="w"> </span><span class="o">[</span>--idle-hours<span class="w"> </span>H<span class="o">]</span><span class="w"> </span><span class="o">[</span>--buffer-mb<span class="w"> </span>M<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--wss<span class="w"> </span>--cert-path<span class="w"> </span>FILE<span class="w"> </span>--key-path<span class="w"> </span>FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--auth-token<span class="w"> </span>TOKEN<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--no-auth-token<span class="o">]</span><span class="w"> </span><span class="o">[</span>--regenerate-token<span class="o">]</span><span class="w"> </span><span class="o">[</span>--copy-token<span class="o">]</span><span class="w"> </span><span class="o">[</span>--allow-root<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--allow-origin<span class="w"> </span>HOST_SUFFIX<span class="o">[</span>,HOST_SUFFIX...<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--max-message-mb<span class="w"> </span>M<span class="o">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Env var</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--port</code></td>
+<td><code>PORT</code></td>
+<td><code>3000</code></td>
+<td>Port to listen on.</td>
+</tr>
+<tr>
+<td><code>--host</code></td>
+<td><code>HOST</code></td>
+<td><code>localhost</code></td>
+<td>Bind address. <strong>Not</strong> auto-detected from <code>--wss</code> or anything else, without this, the server can never be reached from outside the machine, no matter what else is configured. Use <code>0.0.0.0</code> (or a specific interface) for standalone direct exposure with no reverse proxy in front; a reverse-proxy deployment doesn't need this at all, since the proxy is what's actually reachable. A non-loopback bind refuses to start only if <code>--no-auth-token</code> is also passed, otherwise the auto-generated (or explicit) token below still applies. "Loopback" is an exact match against <code>localhost</code>/<code>127.0.0.1</code>/<code>::1</code>/<code>[::1]</code> - a value like <code>127.0.0.2</code> is treated as non-loopback and will demand a token too.</td>
+</tr>
+<tr>
+<td><code>--idle-hours</code></td>
+<td><code>IDLE_HOURS</code></td>
+<td><code>12</code></td>
+<td>Idle time before a disconnected shell session is killed. A client's own <code>?idleHours=</code> query param can only lower this, never raise it - it's a ceiling, not just a default.</td>
+</tr>
+<tr>
+<td><code>--buffer-mb</code></td>
+<td><code>BUFFER_MB</code></td>
+<td><code>8</code></td>
+<td>Max size of the per-session output replay buffer (used for reattach). A client's own <code>?bufferMb=</code> query param can only lower this, never raise it, same as <code>?idleHours=</code> above, except at exactly <code>0</code>: unlike <code>?idleHours=0</code> (an explicit zero grace period, honored as given), <code>?bufferMb=0</code> is treated as "no override" and falls back to the server default, since a zero-size buffer isn't a meaningful value.</td>
+</tr>
+<tr>
+<td><code>--wss</code></td>
+<td>-</td>
+<td>off</td>
+<td>Serve <code>wss://</code> (TLS) directly, using <code>--cert-path</code>/<code>--key-path</code>. Requires a token (auto-generated by default) and a real <code>--cert-path</code>/<code>--key-path</code> pair - refuses to start otherwise.</td>
+</tr>
+<tr>
+<td><code>--cert-path</code> / <code>--key-path</code></td>
+<td><code>CERT_PATH</code> / <code>KEY_PATH</code></td>
+<td>-</td>
+<td>TLS certificate/key files, required with <code>--wss</code>.</td>
+</tr>
+<tr>
+<td><code>--auth-token</code></td>
+<td><code>AUTH_TOKEN</code></td>
+<td>auto-generated</td>
+<td>Shared secret required on every <code>/terminal</code>, <code>/host</code>, <code>/mcp</code> connection. If not set explicitly, one is generated on first run and persisted to <code>~/.gridshell/token</code> (or <code>$GRIDSHELL_TOKEN_PATH</code>), reused on every future launch. Never printed to the console - see "Security &amp; deployment" below for how it's actually delivered.</td>
+</tr>
+<tr>
+<td><code>--no-auth-token</code></td>
+<td>-</td>
+<td>off</td>
+<td>Disable the token entirely. <strong>Not recommended</strong> unless access is restricted at a different layer (see "Security &amp; deployment" below) - refused together with <code>--wss</code> or a non-loopback <code>--host</code>.</td>
+</tr>
+<tr>
+<td><code>--regenerate-token</code></td>
+<td>-</td>
+<td>off</td>
+<td>Force a fresh auto-generated token this launch, overwriting the persisted one. Not valid together with <code>--auth-token</code> or <code>--no-auth-token</code> - there's nothing to regenerate in either case.</td>
+</tr>
+<tr>
+<td><code>--copy-token</code></td>
+<td>-</td>
+<td>-</td>
+<td>Resolve the current token (persisted/auto-generated, or an explicit <code>--auth-token</code>/<code>AUTH_TOKEN</code>) and copy it to the clipboard, then exit without starting the server. This way it can be retrieved again later.</td>
+</tr>
+<tr>
+<td><code>--allow-root</code></td>
+<td>-</td>
+<td>off</td>
+<td>Allow starting as root/Administrator, refused by default, see "Shell privileges" below.</td>
+</tr>
+<tr>
+<td><code>--allow-origin</code></td>
+<td><code>ALLOW_ORIGIN</code></td>
+<td><code>*.googleusercontent.com</code></td>
+<td>Comma-separated list of extra allowed <code>Origin</code> header suffixes (see "Security &amp; deployment" below). Google's own Apps Script origin is always allowed; add your own only if you're fronting the server with something other than the stock Sheets sidebar.</td>
+</tr>
+<tr>
+<td><code>--max-message-mb</code></td>
+<td><code>MAX_MESSAGE_MB</code></td>
+<td><code>64</code></td>
+<td>Max size of a single WebSocket message on any endpoint. Raise it if you work with very large ranges; the underlying library's own default (1 MiB) is well inside a normal Sheets range. <code>gridshell-mcp</code>/<code>SheetsClient</code> read the same <code>$MAX_MESSAGE_MB</code> - set it wherever they run too, not just on the server, or they'll reject an oversized response the server was happy to send.</td>
+</tr>
+</tbody>
+</table>
+<p>An unrecognized flag, a value-taking flag with no value, or a non-numeric value for a numeric flag, exits immediately with a clear error rather than being silently ignored or surfacing as a raw traceback. Run with <code>--help</code> for the full flag list.</p>
+<h2 id="security-deployment">Security &amp; deployment<a class="headerlink" href="#security-deployment" title="Permanent link">&para;</a></h2>
+<p>Access to <code>gridshell-server</code> is access to a real, interactive shell, so a token guards every connection by default - including a purely local one. It's required on <code>/terminal</code>, <code>/host</code>, and <code>/mcp</code> alike, checked as the first message on the connection rather than in the URL (so it never ends up in a reverse proxy's plaintext access log), and compared byte-for-byte, so non-ASCII values work fine. An <code>Origin</code>-header check adds a second, smaller layer on top - it catches a browser tab on the same machine trying to connect directly, but not a plain script or process, which sends no <code>Origin</code> at all; the token is what's actually doing the work.</p>
+<p><strong>Getting the token.</strong> Left unset, <code>gridshell-server</code> generates one on first run, persists it to <code>~/.gridshell/token</code> (or <code>$GRIDSHELL_TOKEN_PATH</code>) so it survives restarts, and copies it to your clipboard rather than printing it - paste it once into the Sidebar's <strong>Auth token</strong> field, it's saved per Google account and carries over to every other spreadsheet. Run <code>--copy-token</code> any time to copy the current value again, or <code>--regenerate-token</code> to rotate it. No clipboard available (a headless box, an SSH session)? The server starts normally regardless and prints the file path instead - read it from there. Only an actual failure to persist the token refuses to start. Prefer to manage it yourself instead? Pass <code>--auth-token</code>/<code>$AUTH_TOKEN</code> - the natural choice for a deployment where the token already lives in your own secrets management.</p>
+<p><strong>Three ways to run it:</strong>
+- <strong>Local, trusted use</strong> (the default) - nothing further to configure.
+- <strong>Behind a reverse proxy that terminates TLS</strong> (nginx, Caddy, Cloudflare, ...) - pass <code>--auth-token</code> or keep the default; <code>gridshell-server</code> itself doesn't need a certificate.
+- <strong>Standalone, directly exposed</strong> - add <code>--wss --cert-path FILE --key-path FILE</code>. Works with a loopback bind too, if you want to encrypt local traffic as well; see below.</p>
+<p><code>--wss</code> and a non-loopback <code>--host</code> both refuse to start without a token configured, so there's no way to end up exposed with nothing guarding the connection. The token check itself doesn't depend on <code>--wss</code>. TLS termination and authentication are separate questions, and gating one on the other would leave the reverse-proxy shape (the common production case) silently unchecked.</p>
+<p>Each open document's shell also carries its own per-spawn secrets. Naming a session over <code>/mcp</code>, <code>/host</code>, or <code>/terminal</code> isn't enough on its own, the matching key has to come with it, so knowing or guessing another document's session id doesn't reach it. This only applies to <em>attaching</em> to an already-running shell (evicting its live dialog and replaying its scrollback); spawning a brand-new one has no prior key to check against yet. <code>gridshell-mcp</code>/<code>SheetsClient</code> handle this automatically from inside the shell they're targeting; see <a href="../mcp/">MCP</a> and <a href="../python-client/">Python Client</a> for the explicit-session case. The Sheets add-on's own sidebar handles its <code>/host</code> and <code>/terminal</code> keys the same way, transparently.</p>
+<p><code>gridshell-server</code> is a single-operator tool - one person running their own server for their own use, not a shared or multi-tenant backend.</p>
+<h3 id="encrypting-a-local-server-too">Encrypting a local server too<a class="headerlink" href="#encrypting-a-local-server-too" title="Permanent link">&para;</a></h3>
+<p><code>--wss</code> isn't only for remote deployments, it works with a loopback bind as well, encrypting the connection itself against anything else on the same machine that might be watching local traffic. This is offered as an available option, not the default, since it trades a bit of setup friction for it: a self-signed certificate works, but the browser will show a certificate warning the first time it connects, which you'd need to accept.</p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-keyout<span class="w"> </span>key.pem<span class="w"> </span>-out<span class="w"> </span>cert.pem<span class="w"> </span>-subj<span class="w"> </span><span class="s2">"/CN=localhost"</span>
+gridshell-server<span class="w"> </span>--wss<span class="w"> </span>--host<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--cert-path<span class="w"> </span>cert.pem<span class="w"> </span>--key-path<span class="w"> </span>key.pem
+</code></pre></div>
+<p>For a setup with no browser warning at all, use a tool like <a href="https://github.com/FiloSottile/mkcert">mkcert</a> to install a locally-trusted certificate authority instead of a plain self-signed one.</p>
+<h3 id="hardening-a-remote-deployment">Hardening a remote deployment<a class="headerlink" href="#hardening-a-remote-deployment" title="Permanent link">&para;</a></h3>
+<p>The above covers what <code>gridshell-server</code> itself does; a remote (shape 2/3) deployment benefits from standard operator-side hardening too, on top of it:</p>
+<ul>
+<li><strong>A VPN or mesh network (Tailscale, WireGuard) is the best answer for most people who want remote access</strong> without becoming a hardened public-service operator - it keeps the server off the raw public internet entirely, reachable only from your own enrolled devices, while still letting you connect from anywhere.</li>
+<li><strong>OS or cloud firewall IP allow-listing</strong>, if your client IPs are stable restrict inbound connections to just those.</li>
+<li><strong>fail2ban</strong> (or similar) against the server's own log line on a rejected token (<code>"[auth] rejected connection from &lt;ip&gt; ..."</code>) - works today provided you run the server with its output going to a real log file, not just a terminal that vanishes on restart.</li>
+<li><strong>A lightweight reverse proxy purely for rate-limiting</strong>, even if you don't need one for TLS - <code>gridshell-server</code> has no rate-limiting of its own.</li>
+</ul>
+<p>None of this is shipped code - it's the standard playbook for exposing any self-hosted service, applied here.</p>
+<h3 id="shell-privileges">Shell privileges<a class="headerlink" href="#shell-privileges" title="Permanent link">&para;</a></h3>
+<p>The spawned shell inherits the <strong>full environment</strong> of the <code>gridshell-server</code> process, including any secrets you have set as environment variables (cloud credentials, API keys), worth being mindful of before starting it, especially if a less-trusted agent will run inside the resulting shell. If you start <code>gridshell-server</code> from inside an already-running AI CLI session, a shell it spawns inherits that session's own environment markers too. Launching the same CLI tool inside one of those shells may then behave as a nested/child session (ordinary process-environment inheritance, not a GridShell bug). Start the server from a plain terminal instead if you want a clean environment for what it spawns.</p>
+<p><code>gridshell-server</code> refuses to start as root/Administrator by default (<code>--allow-root</code> overrides) - a child process can never exceed its parent's privilege level, so this bounds what a spawned shell can ever do "for free." For real isolation beyond that (a less-trusted agent, or a deployment where you don't fully trust what's connecting), run <code>gridshell-server</code> itself inside a container/VM or under a dedicated, restricted OS account - the same pattern already common for agentic coding tools generally. GridShell doesn't build this containment itself: the tool's core value is a shell that acts as <em>you</em>, with your normal toolchain and credentials, which is in real tension with running it as a stripped-down service account by default. Reusing mature container/VM isolation is lower-risk than us reimplementing a weaker version of it.</p>
+<h2 id="stopping-the-server">Stopping the server<a class="headerlink" href="#stopping-the-server" title="Permanent link">&para;</a></h2>
+<p>Ctrl+C (or a plain <code>kill</code> on Linux/Mac) cleanly terminates every shell currently running before the process exits. A hard crash or a forceful kill (Task Manager "End Task", <code>taskkill /F</code>, <code>kill -9</code>) does not, as no code runs in that case, so a shell that was active at that moment can keep running as an orphaned process, invisible to a freshly started server (a reattach for its session id just spawns a new shell instead of finding it). If this happens, find and end the orphaned process manually (Task Manager / <code>ps</code> + <code>kill</code>) - there's no in-app way to recover it.</p>
+<h2 id="platform-support">Platform support<a class="headerlink" href="#platform-support" title="Permanent link">&para;</a></h2>
+<p>Testing coverage is real but uneven across platforms and deployment shapes - not "all three, fully," so here's the honest breakdown. The automated test suite is designed to run against a fake PTY process on any platform (<code>FakePtyProcess</code> in <code>tests/test_conformance.py</code>). There's no CI configured in this repo yet, so that's currently exercised manually rather than continuously, on whichever platform is running it. It verifies session bookkeeping - attach/reattach/idle-kill/buffer-replay, and the auth-frame/token handling - independent of the real shell backend; it does not exercise <code>pywinpty</code>, <code>ptyprocess</code>, or <code>--wss</code>/TLS on any platform. The platform and deployment coverage below comes from manual testing, not CI.</p>
+<ul>
+<li><strong>Windows</strong>: the primary development platform, tested extensively at the PTY level and through the local/<code>localhost</code> shape; not yet exercised in a real remote/<code>wss</code> deployment. The shell itself is hardcoded to <code>powershell.exe</code> here with no <code>$COMSPEC</code>/<code>pwsh</code> lookup or override, unlike the POSIX side's <code>$SHELL</code> handling below.</li>
+<li><strong>Linux</strong>: the platform tested through a real remote/<code>wss</code> deployment: a live VPS, TLS behind a reverse proxy with a real certificate, correct rejection of a wrong or non-ASCII token, idle-kill, and the isolation guarantee described in <a href="../../app/quick-start/">Quick Start</a> - no way for the agent to reach a <em>different</em> open spreadsheet from within one shell - confirmed live against two spreadsheets connected at once.</li>
+<li><strong>macOS</strong>: tested at the PTY level (spawn/resize/kill) on real hardware, not yet through the full remote/<code>wss</code> deployment flow. One platform-specific thing to know: the server falls back to <code>/bin/bash</code> when <code>$SHELL</code> is unset, which is common for a service/launchd-started process - macOS's own default shell is <code>zsh</code>, and its bundled <code>/bin/bash</code> is the old 3.2 release, so a server started as a service can land you in an unfamiliar shell rather than your normal one. Set <code>$SHELL</code> explicitly if you hit this.</li>
+</ul>
+<p>If you hit a platform-specific issue, especially in a combination not covered above, please report it.</p>
+<h2 id="writing-your-own-server">Writing your own server<a class="headerlink" href="#writing-your-own-server" title="Permanent link">&para;</a></h2>
+<p><code>server.py</code> is meant to be read, not just run. The wire protocol it speaks (<code>/terminal</code>, <code>/host</code>, <code>/mcp</code>) is plain JSON over WebSocket, and there's no reason a Sheets-integrated backend has to be <em>this</em> implementation specifically. If your environment has requirements this reference implementation doesn't meet (a different PTY sandboxing model, integration with existing infrastructure, additional access controls), fork it rather than working around it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 The GridShell developers
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

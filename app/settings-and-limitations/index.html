@@ -1,0 +1,1134 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A real terminal, live-bound to a Google Sheets spreadsheet.">
+      
+      
+      
+        <link rel="canonical" href="https://gridshell.app/app/settings-and-limitations/">
+      
+      
+        <link rel="prev" href="../quick-start/">
+      
+      
+        <link rel="next" href="../../library/installation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Settings & Limitations - GridShell</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#settings-limitations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GridShell" class="md-header__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GridShell
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Settings & Limitations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GridShell" class="md-nav__button md-logo" aria-label="GridShell" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    GridShell
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings & Limitations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings & Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#settings-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-yet-available-planned-not-restricted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not yet available (planned, not restricted)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pro-tier-reserved-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pro-tier-reserved restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL Guard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-idle-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell idle timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../library/python-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Client
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting / FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/privacy-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/terms-of-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terms of Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#settings-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-yet-available-planned-not-restricted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Not yet available (planned, not restricted)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pro-tier-reserved-restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pro-tier-reserved restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL Guard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-idle-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell idle timeout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="settings-limitations">Settings &amp; Limitations<a class="headerlink" href="#settings-limitations" title="Permanent link">&para;</a></h1>
+<h2 id="settings-reference">Settings reference<a class="headerlink" href="#settings-reference" title="Permanent link">&para;</a></h2>
+<p>Open via the GridShell sidebar → <strong>Settings</strong>. URL Guard applies immediately, to every call - it's read fresh from settings on each one, not cached. Everything else applies the next time you open a shell.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server address</td>
+<td><em>(blank)</em></td>
+<td><code>ws://</code> or <code>wss://</code> + <code>host:port</code>.</td>
+</tr>
+<tr>
+<td>Auth token</td>
+<td><em>(blank)</em></td>
+<td>Required by default - <code>gridshell-server</code> copies one to your clipboard on startup (auto-generated, or your own <code>--auth-token</code>) unless it was started with <code>--no-auth-token</code>. No clipboard available? It's saved to <code>~/.gridshell/token</code> regardless - read it from there, or run <code>gridshell-server --copy-token</code> to retrieve it again later once a clipboard is available.</td>
+</tr>
+<tr>
+<td>Working directory</td>
+<td>server default</td>
+<td>Folder new shells start in, on the machine running the server. Leave blank to use the server's own default.</td>
+</tr>
+<tr>
+<td>Terminal theme</td>
+<td>Dark</td>
+<td>Dark or Light.</td>
+</tr>
+<tr>
+<td>Font size</td>
+<td>13</td>
+<td>8–24 pt.</td>
+</tr>
+<tr>
+<td>Terminal width</td>
+<td>900 px</td>
+<td>300–2000 px.</td>
+</tr>
+<tr>
+<td>Terminal height</td>
+<td>600 px</td>
+<td>200–1200 px.</td>
+</tr>
+<tr>
+<td>URL Guard</td>
+<td>On</td>
+<td>See below.</td>
+</tr>
+<tr>
+<td>Show shell title info</td>
+<td>On</td>
+<td>Turn off if you hit Apps Script quota errors - this stops a periodic poll used to keep shell names current.</td>
+</tr>
+<tr>
+<td>Screen reader mode</td>
+<td>Off</td>
+<td>Mirrors terminal output into a screen-reader-accessible region. Off by default because the mirroring has a real per-render cost, and GridShell's typical use (an AI agent producing frequent output) makes that cost real. See the accessibility notes below before turning it on.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="not-yet-available-planned-not-restricted">Not yet available (planned, not restricted)<a class="headerlink" href="#not-yet-available-planned-not-restricted" title="Permanent link">&para;</a></h2>
+<p>These aren't tiering decisions - they simply aren't built yet. See the <a href="../../roadmap/">Roadmap</a> for where they stand.</p>
+<ul>
+<li><strong>Native Sheets custom functions.</strong> Sheets' <code>=MYFUNCTION(A1)</code> mechanism requires writing new source code into the spreadsheet's own bound script project - GridShell's agent doesn't do that today. An equivalent capability is available a different way: the agent can compute whatever logic it needs in its own shell or via MCP tools, and write the result directly into cells. The difference is <em>how</em> it's invoked (on demand, agent-driven) rather than what's possible.</li>
+<li><strong>Multi-sheet / cross-workbook sessions.</strong> Each GridShell session is bound to the single spreadsheet it was opened from - there's no way for the agent to read or write a <em>different</em> spreadsheet within that session today.</li>
+</ul>
+<h2 id="pro-tier-reserved-restrictions">Pro-tier-reserved restrictions<a class="headerlink" href="#pro-tier-reserved-restrictions" title="Permanent link">&para;</a></h2>
+<p>Unlike the gaps above, these are deliberate. The governing principle: <strong>structure is always open, polish is gated.</strong> GridShell's value is the live, iterative loop of building a sheet with an AI agent in the room - so anything inside that loop (creating and refining pivots, filters, data validation, named ranges, formulas, charts, conditional-formatting logic, and so on) stays free. Only cosmetic refinement layered on top of an already-built structure is reserved for a future Pro tier:</p>
+<ul>
+<li><strong>Chart cosmetic styling</strong> - colors, opacity, fonts, stroke, fill, theme. Structural chart configuration (title, axes, stacking) stays open.</li>
+<li><strong>Conditional-formatting color scales / heatmap gradients.</strong> The rule <em>logic</em> itself (the conditions) stays fully open, only the gradient-color styling is reserved.</li>
+<li><strong>Spreadsheet theme and branding.</strong></li>
+<li><strong>Protection and sharing</strong> - protecting ranges/sheets, and adding or removing editors/viewers.</li>
+</ul>
+<p>Two more limits are marketed the same way - Pro-tier-reserved, not just technical ceilings:</p>
+<ul>
+<li><strong>Shell cap: 2 concurrent shells per document.</strong></li>
+<li><strong>Batch execution budget: ~4.5 minutes per <code>runBatch</code> call</strong>, fixed regardless of Google account type. Enforced between operations, not within one - a single very large operation can still run long enough to hit Apps Script's own 6-minute hard cap.</li>
+</ul>
+<p>A separate, plain technical ceiling applies regardless of tier: <strong>at most 500 operations per <code>runBatch</code> call.</strong> Split a larger batch into multiple calls of up to 500 operations each.</p>
+<p>If GridShell rejects a call for one of these reasons, it tells you which one and why - this isn't a silent failure.</p>
+<h2 id="url-guard">URL Guard<a class="headerlink" href="#url-guard" title="Permanent link">&para;</a></h2>
+<p>On by default. Blocks any formula call containing <code>IMPORTDATA</code>, <code>IMPORTXML</code>, <code>IMPORTHTML</code>, <code>IMPORTFEED</code>, <code>IMAGE</code>, <code>IMPORTRANGE</code>, or <code>HYPERLINK</code> - every one of them takes an arbitrary URL as an argument, which is exactly what URL Guard exists to limit: what an agent-written formula can silently fetch from or link to without you seeing it. (A few other built-in functions, like <code>GOOGLEFINANCE</code>, also reach outside the spreadsheet - these aren't blocked, since none of them take an arbitrary URL the way the functions above do.) This check applies to the formula text an agent writes directly <em>and</em> to a value it reads from the sheet and then writes elsewhere - copying a range whose formulas contain a guarded function is blocked the same way writing that formula directly would be. This is a <strong>security</strong> boundary, unrelated to the Pro-tier list above - it isn't something a paid tier removes.</p>
+<p>URL Guard also blocks the structured-API equivalents of these same vectors - <code>insertImage()</code> and <code>setSourceUrl()</code> (an image fetched from an external URL) and <code>setLinkUrl()</code> (a hyperlink) - since these reach outside the spreadsheet the same way <code>IMAGE()</code>/<code>HYPERLINK()</code> do, without ever producing formula text for the check above to see.</p>
+<p>Turning it off requires a confirmation every time:</p>
+<blockquote>
+<p><strong>Turn off URL Guard?</strong>
+This allows formulas that can fetch external data or pull data from other spreadsheets (IMPORTDATA, IMPORTXML, IMPORTHTML, IMPORTFEED, IMAGE, IMPORTRANGE) or that create hyperlinks - these can be used to leak your data or mislead you. Only turn this off if you trust the content and formulas you're working with.</p>
+</blockquote>
+<h2 id="shell-idle-timeout">Shell idle timeout<a class="headerlink" href="#shell-idle-timeout" title="Permanent link">&para;</a></h2>
+<p>A shell's process survives closing its dialog - that's what makes it safe to close and declutter while an agent keeps working (see <a href="../quick-start/">Quick Start</a>), but not indefinitely. The clock starts the moment its dialog <strong>disconnects</strong>, for any reason (closing it, your machine sleeping, a network drop, a crashed tab), and the server kills the shell once that reaches 12 hours by default (the person running your server can change this, see <a href="../../library/server/">Server: flags</a>). Reopening the dialog within that window reattaches you to the still-running shell with its history intact; past it, reopening just starts a fresh one.</p>
+<p><strong>Being listed in the sidebar does not, by itself, keep a shell alive.</strong> The sidebar only tracks that a shell exists and keeps its own sheet-access connection open, independent of the dialog-side idle clock. For a long-running task to survive an extended gap (an overnight run, a laptop that'll sleep), the shell's dialog needs to reconnect within the idle window - being listed isn't enough on its own.</p>
+<h2 id="accessibility">Accessibility<a class="headerlink" href="#accessibility" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Screen reader mode's Shift+Tab tradeoff.</strong> With screen reader mode on, Shift+Tab always moves keyboard focus out of the terminal, rather than reaching the shell's own tab-completion. This is a deliberate accessibility tradeoff in the underlying terminal component, not a bug.</li>
+<li><strong>Alt-screen programs can leave your screen reader's view stale.</strong> Switching to a full-screen program inside the shell (<code>vim</code>, <code>nano</code>, <code>claude</code>, etc.) while screen reader mode is on can leave your screen reader's read-out of the terminal looking stale or missing recent history, even though the terminal's actual visible content is unaffected. This is a known limitation of the underlying terminal component's accessibility handling of full-screen mode switches, not something GridShell can currently fix.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 The GridShell developers
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
