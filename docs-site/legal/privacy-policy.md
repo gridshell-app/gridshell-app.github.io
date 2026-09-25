@@ -1,22 +1,51 @@
 # Privacy Policy
 
-## What GridShell's app can access
+## Definitions
 
-The GridShell Sheets add-on requests two scopes:
+- **The developer**: the developer of GridShell.
+- **The app**: the GridShell Google Sheets add-on.
+- **Personal data**: information that identifies or can be used to identify a person, such as a name, email address, phone number, or home address.
+- **Google user data**: data the app obtains through the two Google permissions ("scopes") it requests, described in the next section. Nothing outside those two scopes is accessed.
 
-- `spreadsheets.currentonly` - access to the spreadsheet you have open when you run GridShell, and only that spreadsheet. GridShell cannot see or touch any other file in your Google account.
-- `script.container.ui` - permission to show the sidebar and dialog GridShell's interface is built from.
+## Data the app accesses
 
-## What GridShell does with that access
+The app requests two scopes:
 
-The add-on relays commands between the spreadsheet and a terminal server, which you, the user, run yourself (see [Introduction](../index.md) for the two-component architecture). GridShell (the developer) does not operate a shared backend, does not see your spreadsheet's contents pass through any server it controls, and does not persist your data anywhere beyond the live session between your browser and your own self-hosted server.
+- `spreadsheets.currentonly` - access to the contents of the one spreadsheet you have open when you run the app (cell values, formulas, formatting, charts, and so on), and only that spreadsheet. The app cannot see or touch any other file in your Google account. This content may include personal data, if you have put personal data in the spreadsheet.
+- `script.container.ui` - permission to show the sidebar and dialog the app's interface is built from. This scope does not give access to any data.
 
-## Data retention
+The app does not request access to your name, email address, profile, contacts, Drive, or any other Google data, and it does not collect personal data.
 
-- Settings (server address, theme, font size, etc.) are stored per-user, in your own Google account's Apps Script user properties - not on any GridShell-operated server, because there isn't one.
-- The list of open shells for a document is stored per-document, in that document's Apps Script properties.
+## How the app works with that data
+
+The app gives you a terminal (a shell) inside Google Sheets. The shell runs on a terminal server that you install and run yourself, on a machine you choose; see [Introduction](../index.md) for the two-component architecture. The developer does not operate a shared backend, and no data passes through any server the developer controls.
+
+- The `script.container.ui` scope is what displays the shell's output in the sidebar and dialog, whatever that output is.
+- The `spreadsheets.currentonly` scope is what lets programs you run in the shell read or write the open spreadsheet, through a connection between the app and your own server. Whether a program touches the spreadsheet at all, and what it does with the data, depends entirely on the program you choose to run: a script you wrote, an AI agent or assistant, or any other tool. The app does not choose, inspect, or control those programs.
+
+## Use, sharing, and transfer
+
+- The app uses Google user data only to provide the features visible in its interface: relaying the commands you or your programs issue to the open spreadsheet, and showing you the results.
+- The developer does not receive, store, sell, or share Google user data, and does not transfer it to any third party. It is not used for advertising.
+- The developer does not use Google user data to develop, improve, or train any machine learning or AI model.
+- Data leaves the spreadsheet only along the path you set up: to your own server, and from there to whichever programs you run in the shell. If one of those programs sends data on to another service, such as a hosted AI model, that is a decision made in the program you chose, not by the app or the developer, and that service's own terms apply.
+- Humans at the developer do not read Google user data; the developer has no access to it.
+
+## Data protection
+
+The app does not store Google user data; it only relays it between the spreadsheet and your server. The connection goes to your server address you enter in Settings: a server on your own machine, or a remote one (use a `wss://` address to encrypt the connection). The server requires an authentication token by default, so nothing can connect to it without that token. If you run a server that other machines can reach, see [Server: Security & Deployment](../library/server.md#security-deployment) for how to secure it.
+
+## Data retention and deletion
+
+- Spreadsheet contents are never copied into any storage operated by the developer, because there isn't any. 
+- Settings (server address, authentication token, theme, font size, etc.) are stored per user, in your own Google account's Apps Script user properties - not on any server operated by the developer. They can remain associated with your account after the app is uninstalled; to remove them, clear the server address and token in Settings and Save before uninstalling.
+- The list of open shells for a document is stored per document, in that document's Apps Script properties.
 - Terminal output is buffered in memory on your own self-hosted server for reattach purposes, and is not persisted beyond that server's own process lifetime (subject to whatever you, as its operator, choose to log).
+
+## Google API Services User Data Policy
+
+The app's use and transfer of information received from Google APIs to any other app will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ## Contact
 
-gridshell.app@gmail.com
+gridshell.app@gmail.com. If you email this address or open a GitHub issue, the details you choose to include are received by the developer only for the purpose of responding.
