@@ -8,13 +8,13 @@ Before you start: GridShell's Sheets add-on is a client - it needs a running Gri
 2. Extensions → Add-ons → Get add-ons, search for **GridShell**, install it.
 3. Reload the spreadsheet. A **GridShell** menu appears (under Extensions, or as its own top-level menu depending on your Workspace settings).
 
-The first time you open GridShell, you'll see a one-time welcome dialog. It won't reappear.
+Until you've saved a server address (next section), opening GridShell shows a short welcome dialog with setup pointers. It goes away for good once you save one.
 
 ## Connect to a server
 
 1. GridShell menu → **Open** - opens the sidebar.
 2. Expand **Settings**.
-3. Under **Server address**, choose `ws://` (local server, no certificate) or `wss://` (remote server, requires a valid TLS certificate on the server side), and enter `host:port` - e.g. `localhost:3000` or `yourdomain.com:3000`.
+3. Under **Server address**, choose `ws://` (local server, no certificate) or `wss://` (remote server, requires a valid TLS certificate on the server side), and enter `host:port`, e.g. `localhost:3000` or `yourdomain.com:3000`.
 4. A token is required by default - `gridshell-server` copies it to your clipboard on startup (run `gridshell-server --copy-token` to get it again later), so paste it into the **Auth token** field below it. You only need to do this once per Google account; it carries over into every other spreadsheet you use GridShell in.
 5. Leave the other settings at their defaults for now (see [Settings & Limitations](settings-and-limitations.md) for what each one does) and click **Save**.
 
