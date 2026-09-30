@@ -50,9 +50,11 @@ An unrecognized flag, a value-taking flag with no value, or a non-numeric value 
 
 Access to `gridshell-server` is access to a real, interactive shell, so a token guards every connection by default - including a purely local one. It's required on `/terminal`, `/host`, and `/mcp` alike, checked as the first message on the connection rather than in the URL (so it never ends up in a reverse proxy's plaintext access log), and compared byte-for-byte, so non-ASCII values work fine. An `Origin`-header check adds a second, smaller layer on top - it catches a browser tab on the same machine trying to connect directly, but not a plain script or process, which sends no `Origin` at all; the token is what's actually doing the work.
 
-**Getting the token.** Left unset, `gridshell-server` generates one on first run, persists it to `~/.gridshell/token` (or `$GRIDSHELL_TOKEN_PATH`) so it survives restarts, and copies it to your clipboard rather than printing it - paste it once into the Sidebar's **Auth token** field, it's saved per Google account and carries over to every other spreadsheet. Run `--copy-token` any time to copy the current value again, or `--regenerate-token` to rotate it. No clipboard available (a headless box, an SSH session)? The server starts normally regardless and prints the file path instead - read it from there. Only an actual failure to persist the token refuses to start. Prefer to manage it yourself instead? Pass `--auth-token`/`$AUTH_TOKEN` - the natural choice for a deployment where the token already lives in your own secrets management.
+### Getting the token
 
-**Three ways to run it:**
+Left unset, `gridshell-server` generates one on first run, persists it to `~/.gridshell/token` (or `$GRIDSHELL_TOKEN_PATH`) so it survives restarts, and copies it to your clipboard rather than printing it - paste it once into the Sidebar's **Auth token** field, it's saved per Google account and carries over to every other spreadsheet. Run `--copy-token` any time to copy the current value again, or `--regenerate-token` to rotate it. No clipboard available (a headless box, an SSH session)? The server starts normally regardless and prints the file path instead - read it from there. Only an actual failure to persist the token refuses to start. Prefer to manage it yourself instead? Pass `--auth-token`/`$AUTH_TOKEN` - the natural choice for a deployment where the token already lives in your own secrets management.
+
+### Three ways to run the server
 
 - **Local, trusted use** (the default) - nothing further to configure.
 - **Behind a reverse proxy that terminates TLS** (nginx, Caddy, Cloudflare, ...) - pass `--auth-token` or keep the default; `gridshell-server` itself doesn't need a certificate.

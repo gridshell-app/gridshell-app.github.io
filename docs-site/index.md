@@ -4,9 +4,9 @@
     The GridShell Sheets add-on is currently pending review for the Google Workspace Marketplace and isn't installable yet. The rest of this documentation, and the open-source library it depends on, are already available in the meantime - this note comes down once the add-on is approved.
 
 ## What GridShell is
-GridShell gives you a real terminal, live-bound to an open Google Sheets spreadsheet. You can manipulate the sheet through structured calls, either using an [AI agent](library/mcp.md) or running [Python scripts](library/python-client.md) directly, and in contrast to "external" REST API or MCP integrations, you can also point the calls at whatever is currently selected. This way you can build a spreadsheet iteratively - try something, look at the result, and adjust - rather than relying on a one-shot script and hoping it's right.
+GridShell gives you a real terminal, live-bound to an open Google Sheets spreadsheet, that any AI agent you already run can drive directly. GridShell doesn't run or host any AI model itself, and never sees your spreadsheet data - you bring the agent (Claude Code, Codex, Antigravity, OpenCode, or any other CLI agent that speaks MCP, local or backed by its own vendor's API), GridShell only bridges it to the sheet. You can manipulate the sheet through structured calls, either using an [AI agent](library/mcp.md) or running [Python scripts](library/python-client.md) directly, and in contrast to "external" REST API or MCP integrations, you can also point the calls at whatever is currently selected. This way you can build a spreadsheet iteratively - try something, look at the result, and adjust - rather than relying on a one-shot script and hoping it's right.
 
-Any MCP-compatible CLI agent can drive it, including a locally-hosted one, not just a single vendor's own integration, unlike most other AI-in-Sheets add-ins: switching models here is cheap, and nothing locks you into one. At the same time, you have all the flexibility of an API/MCP integration, including [building your own tools](library/mcp.md#customizing) on top of the ones [GridShell already provides](library/mcp.md#tools).
+Any MCP-compatible CLI agent can drive it, including a locally-hosted one, not just a single vendor's own integration, unlike most other AI-in-Sheets add-ins: switching models here is cheap, and nothing locks you into one. At the same time, you have all the flexibility of an API/MCP integration, including [building your own tools](library/mcp.md#customizing) on top of the ones [GridShell already provides](library/mcp.md#tools) - and, unlike a fixed integration, you or the agent itself can diagnose and adjust the agent's harness (instructions, skills, tools) mid-session when something isn't working, not just retry the same fixed calls.
 
 ## How the pieces fit together
 
@@ -27,6 +27,7 @@ GridShell is provided as-is, with no warranty of any kind - see the [Terms of Se
 
 ## Where to go next
 
+- [About](about.md) - who develops and maintains GridShell, and why.
 - [GridShell App](app/quick-start.md) - install from the Marketplace, connect to a server, run your first shell.
 - [GridShell Library](library/installation.md) - install the `gridshell` Python package, run a server, register the MCP relay.
 - [Troubleshooting / FAQ](troubleshooting.md)

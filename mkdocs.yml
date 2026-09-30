@@ -2,7 +2,9 @@ site_name: GridShell
 site_description: A real terminal, live-bound to a Google Sheets spreadsheet.
 site_url: https://gridshell.app/
 docs_dir: docs-site
-copyright: "&copy; 2026 The GridShell developers"
+copyright: >
+  &copy; 2026 The GridShell developers. GridShell is an independent third-party integration for Google Sheets, not affiliated with or endorsed by Google, Anthropic, OpenAI, or Anomaly Innovations.
+  Google Sheets&trade;, Google Workspace&trade;, Google Apps Script&trade;, and Antigravity&trade; are trademarks of Google; Claude&trade; of Anthropic; Codex&trade; of OpenAI; OpenCode&trade; of Anomaly Innovations.
 
 theme:
   name: material
@@ -29,6 +31,7 @@ markdown_extensions:
 
 nav:
   - Introduction: index.md
+  - About: about.md
   - App:
       - Quick Start: app/quick-start.md
       - Settings & Limitations: app/settings-and-limitations.md

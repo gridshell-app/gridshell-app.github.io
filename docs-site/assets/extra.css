@@ -15,12 +15,16 @@
   height: 2.2rem;
 }
 
-/* Differentiate top-level nav sections (App / Library / Legal) from leaf links */
-.md-nav__item--section > .md-nav__link {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.65rem;
-  color: var(--md-default-fg-color--light);
+/* Differentiate top-level nav sections (App / Library / Legal) from leaf
+   links - desktop sidebar only, where they sit inline with real links and
+   need the distinction; mobile's drawer already separates them by depth. */
+@media screen and (min-width: 76.25em) {
+  .md-nav__item--section > .md-nav__link {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.65rem;
+    color: var(--md-default-fg-color--light);
+  }
 }
 
 /* Links and the active nav item default to --md-primary-fg-color, which is
