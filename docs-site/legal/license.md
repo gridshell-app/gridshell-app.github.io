@@ -48,6 +48,6 @@ Copyright (c) 2026 The GridShell developers. All rights reserved.
 This software (the GridShell Google Sheets™ add-on) is proprietary. It is
 not licensed for reuse, modification, redistribution, or derivative works,
 and no rights are granted beyond ordinary use of the installed add-on
-through the Google Workspace™ Marketplace, under the GridShell Terms of
+through the Google Workspace Marketplace, under the GridShell Terms of
 Service.
 ```

@@ -12,10 +12,10 @@ Any MCP-compatible CLI agent can drive it, including a locally-hosted one, not j
 
 Using GridShell requires two components running together:
 
-- **The GridShell app** (installed from the Google Workspace™ Marketplace) provides the in-Sheets terminal UI, session management, and settings.
+- **The GridShell app** (installed from the Google Workspace Marketplace) provides the in-Sheets terminal UI, session management, and settings.
 - **A self-hosted server** (the GridShell Python library, installed via PyPI) provides the actual shell and the MCP relay the agent connects to.
 
-The app installs in a few clicks, while the server is something you run yourself, on infrastructure you choose - one per user, never a shared backend GridShell operates on your behalf. It's also open source (MIT), so you can read exactly what it does, adapt it to your own security requirements, or build your own tools on top of it, rather than taking a privacy claim on faith. The app itself, distributed only through the Google Workspace™ Marketplace, is closed source at this point. See [License](legal/license.md) for the full terms of both, [GridShell App](app/quick-start.md) for installing and using the add-on, and [GridShell Library](library/installation.md) for installing and running the server.
+The app installs in a few clicks, while the server is something you run yourself, on infrastructure you choose - one per user, never a shared backend GridShell operates on your behalf. It's also open source (MIT), so you can read exactly what it does, adapt it to your own security requirements, or build your own tools on top of it, rather than taking a privacy claim on faith. The app itself, distributed only through the Google Workspace Marketplace, is closed source at this point. See [License](legal/license.md) for the full terms of both, [GridShell App](app/quick-start.md) for installing and using the add-on, and [GridShell Library](library/installation.md) for installing and running the server.
 
 ## Security
 

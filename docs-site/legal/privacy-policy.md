@@ -19,7 +19,7 @@ The app does not request access to any other Google data (such as Drive or conta
 
 ## How the app works with that data
 
-The app gives you a terminal (a shell) inside Google Sheets™. The shell runs on a terminal server that you install and run yourself, on a machine you choose; see [Introduction](../index.md) for the two-component architecture. The developer does not operate a shared backend, and no data passes through any server the developer controls.
+The app gives you a terminal (a shell) inside Google Sheets. The shell runs on a terminal server that you install and run yourself, on a machine you choose; see [Introduction](../index.md) for the two-component architecture. The developer does not operate a shared backend, and no data passes through any server the developer controls.
 
 - The `script.container.ui` scope is what displays the shell's output in the sidebar and dialog, whatever that output is.
 - The `spreadsheets.currentonly` scope is what lets programs you run in the shell read or write the open spreadsheet, through a connection between the app and your own server. Whether a program touches the spreadsheet at all, and what it does with the data, depends entirely on the program you choose to run: a script you wrote, an AI agent or assistant, or any other tool. The app does not choose, inspect, or control those programs.

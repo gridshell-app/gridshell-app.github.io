@@ -22,7 +22,7 @@ You agree not to use GridShell to:
 
 ## Third-party services
 
-Your use of the Sheets add-on is also governed by Google's own terms for Workspace Marketplace apps and Apps Script. GridShell doesn't control the Google Sheets™/Workspace™ platform and isn't responsible for its availability, changes, or policies.
+Your use of the Sheets add-on is also governed by Google's own terms for Workspace Marketplace apps and Apps Script. GridShell doesn't control the Google Sheets/Workspace™ platform and isn't responsible for its availability, changes, or policies.
 
 ## Availability and changes
 

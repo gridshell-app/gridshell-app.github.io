@@ -57,7 +57,7 @@ Left unset, `gridshell-server` generates one on first run, persists it to `~/.gr
 ### Three ways to run the server
 
 - **Local, trusted use** (the default) - nothing further to configure.
-- **Behind a reverse proxy that terminates TLS** (nginx, Caddy, Cloudflare, ...) - pass `--auth-token` or keep the default; `gridshell-server` itself doesn't need a certificate.
+- **Behind a reverse proxy that terminates TLS** (nginx™, Caddy, Cloudflare™, ...) - pass `--auth-token` or keep the default; `gridshell-server` itself doesn't need a certificate.
 - **Standalone, directly exposed** - add `--wss --cert-path FILE --key-path FILE`. Works with a loopback bind too, if you want to encrypt local traffic as well; see below.
 
 `--wss` and a non-loopback `--host` both refuse to start without a token configured, so there's no way to end up exposed with nothing guarding the connection. The token check itself doesn't depend on `--wss`. TLS termination and authentication are separate questions, and gating one on the other would leave the reverse-proxy shape (the common production case) silently unchecked.
@@ -82,7 +82,7 @@ For a setup with no browser warning at all, use a tool like [mkcert](https://git
 
 The above covers what `gridshell-server` itself does; a remote (shape 2/3) deployment benefits from standard operator-side hardening too, on top of it:
 
-- **A VPN or mesh network (Tailscale, WireGuard) is the best answer for most people who want remote access** without becoming a hardened public-service operator - it keeps the server off the raw public internet entirely, reachable only from your own enrolled devices, while still letting you connect from anywhere.
+- **A VPN or mesh network (Tailscale™, WireGuard™) is the best answer for most people who want remote access** without becoming a hardened public-service operator - it keeps the server off the raw public internet entirely, reachable only from your own enrolled devices, while still letting you connect from anywhere.
 - **OS or cloud firewall IP allow-listing**, if your client IPs are stable restrict inbound connections to just those.
 - **fail2ban** (or similar) against the server's own log line on a rejected token (`"[auth] rejected connection from <ip> ..."`) - works today provided you run the server with its output going to a real log file, not just a terminal that vanishes on restart.
 - **A lightweight reverse proxy purely for rate-limiting**, even if you don't need one for TLS - `gridshell-server` has no rate-limiting of its own.
@@ -103,9 +103,9 @@ Ctrl+C (or a plain `kill` on Linux/Mac) cleanly terminates every shell currently
 
 Testing coverage is real but uneven across platforms and deployment shapes - not "all three, fully," so here's the honest breakdown. The automated test suite is designed to run against a fake PTY process on any platform (`FakePtyProcess` in `tests/test_conformance.py`). There's no CI configured in this repo yet, so that's currently exercised manually rather than continuously, on whichever platform is running it. It verifies session bookkeeping - attach/reattach/idle-kill/buffer-replay, and the auth-frame/token handling - independent of the real shell backend; it does not exercise `pywinpty`, `ptyprocess`, or `--wss`/TLS on any platform. The platform and deployment coverage below comes from manual testing, not CI.
 
-- **Windows**: the primary development platform, tested extensively at the PTY level and through the local/`localhost` shape; not yet exercised in a real remote/`wss` deployment. The shell itself is hardcoded to `powershell.exe` here with no `$COMSPEC`/`pwsh` lookup or override, unlike the POSIX side's `$SHELL` handling below.
-- **Linux**: the platform tested through a real remote/`wss` deployment: a live VPS, TLS behind a reverse proxy with a real certificate, correct rejection of a wrong or non-ASCII token, idle-kill, and the isolation guarantee described in [Quick Start](../app/quick-start.md) - no way for the agent to reach a *different* open spreadsheet from within one shell - confirmed live against two spreadsheets connected at once.
-- **macOS**: tested at the PTY level (spawn/resize/kill) on real hardware, not yet through the full remote/`wss` deployment flow. One platform-specific thing to know: the server falls back to `/bin/bash` when `$SHELL` is unset, which is common for a service/launchd-started process - macOS's own default shell is `zsh`, and its bundled `/bin/bash` is the old 3.2 release, so a server started as a service can land you in an unfamiliar shell rather than your normal one. Set `$SHELL` explicitly if you hit this.
+- **Windows™**: the primary development platform, tested extensively at the PTY level and through the local/`localhost` shape; not yet exercised in a real remote/`wss` deployment. The shell itself is hardcoded to `powershell.exe` here with no `$COMSPEC`/`pwsh` lookup or override, unlike the POSIX side's `$SHELL` handling below.
+- **Linux™**: the platform tested through a real remote/`wss` deployment: a live VPS, TLS behind a reverse proxy with a real certificate, correct rejection of a wrong or non-ASCII token, idle-kill, and the isolation guarantee described in [Quick Start](../app/quick-start.md) - no way for the agent to reach a *different* open spreadsheet from within one shell - confirmed live against two spreadsheets connected at once.
+- **macOS™**: tested at the PTY level (spawn/resize/kill) on real hardware, not yet through the full remote/`wss` deployment flow. One platform-specific thing to know: the server falls back to `/bin/bash` when `$SHELL` is unset, which is common for a service/launchd-started process - macOS's own default shell is `zsh`, and its bundled `/bin/bash` is the old 3.2 release, so a server started as a service can land you in an unfamiliar shell rather than your normal one. Set `$SHELL` explicitly if you hit this.
 
 If you hit a platform-specific issue, especially in a combination not covered above, please report it.
 

@@ -71,7 +71,7 @@ The full JSON Schema for `runBatch`'s input is generated directly from the tool'
 
 ## Customizing
 
-If you want to add your own tool, **don't edit the installed copy of `mcp_grid.py` in place** - a future `pip install --upgrade gridshell` will overwrite it and your tool disappears. Copy the file out to your own location, edit that copy, and point your MCP config entry at the copy instead. For example for Claude™ Code:
+If you want to add your own tool, **don't edit the installed copy of `mcp_grid.py` in place** - a future `pip install --upgrade gridshell` will overwrite it and your tool disappears. Copy the file out to your own location, edit that copy, and point your MCP config entry at the copy instead. For example for Claude Code:
 
 ```bash
 claude mcp add gridshell-sheets -- python /path/to/your/mcp_grid.py --port 3010

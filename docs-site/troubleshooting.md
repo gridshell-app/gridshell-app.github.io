@@ -1,7 +1,7 @@
 # Troubleshooting / FAQ
 
 **The sidebar says it can't connect, or hangs for a couple of seconds before connecting.**
-On Windows/Chrome, `ws://localhost` connections can take a couple of seconds due to a browser IPv6-then-IPv4 fallback quirk - this is a known browser behavior, not a GridShell bug. If it never connects at all, confirm the server is actually running (`gridshell-server` should print a `Terminal server (Python) running at ...` line) and that the port in your Server address setting matches.
+On Windows™/Chrome™, `ws://localhost` connections can take a couple of seconds due to a browser IPv6-then-IPv4 fallback quirk - this is a known browser behavior, not a GridShell bug. If it never connects at all, confirm the server is actually running (`gridshell-server` should print a `Terminal server (Python) running at ...` line) and that the port in your Server address setting matches.
 
 **The app refuses a `ws://` address for a remote server, with an error about a blocked connection.**
 Browsers block a plain `ws://` connection from an `https://`-loaded page (Google Sheets™ is always loaded over HTTPS), except to `localhost`/`127.0.0.1`/`[::1]` - this is a browser-level "mixed content" restriction, not something GridShell can override. The app checks for this itself before even attempting to connect, so it surfaces as a clear error rather than a silent hang. Use `wss://` with a valid certificate on the server (either the server terminates TLS itself with `--wss --cert-path --key-path`, or sits behind a reverse proxy that does).
