@@ -39,6 +39,6 @@ Terminal server (Python) running at ws://localhost:3012
   /mcp       MCP server relay
 ```
 
-The token itself is never printed - that first line is the only sign one was generated; it's already on your clipboard (or run `gridshell-server --copy-token` to fetch it again later). See [Running the server](server.md) for how auth works by default.
+The token itself is never printed - that first line is the only sign one was generated; it's already on your clipboard (or run `gridshell-server --copy-token` to fetch it again later). See [Security & deployment](server.md#security-deployment) for how auth works by default.
 
 Next: [Running the server](server.md) for the full flag reference and deployment guidance, or [Registering the MCP relay](mcp.md) to connect an AI agent.

@@ -35,7 +35,7 @@ grid.set_values([[1, 2, 3]])       # overwrite the current selection
 
 ## Connecting to a server that requires a token
 
-A token is required by default (see [Server](server.md)). Pass `token=` explicitly, or leave it unset and set `GRIDSHELL_AUTH_TOKEN` in the environment - already set automatically inside a document's own embedded shell, so a script launched from there needs nothing extra. A wrong or missing token surfaces as `GridShellConnectionError: Rejected by the server: invalid or missing token`. Check the value against `--copy-token`'s clipboard copy or `~/.gridshell/token`.
+A token is required by default (see [Getting the token](server.md#getting-the-token)). Pass `token=` explicitly, or leave it unset and set `GRIDSHELL_AUTH_TOKEN` in the environment - already set automatically inside a document's own embedded shell, so a script launched from there needs nothing extra. A wrong or missing token surfaces as `GridShellConnectionError: Rejected by the server: invalid or missing token`. Check the value against `--copy-token`'s clipboard copy or `~/.gridshell/token`.
 
 ## Which spreadsheet does this connect to?
 

@@ -19,7 +19,7 @@ pip install gridshell
 gridshell-server --port 3012
 ```
 
-Then paste `localhost:3012` and the copied auth token into the Sheets sidebar's Settings - see [Installation](installation.md#verify) for the full walkthrough. What follows is the complete flag reference and deployment guidance.
+Then paste `localhost:3012` and the copied auth token into the Sheets sidebar's Settings - see [Connect to a server](../app/quick-start.md#connect-to-a-server) for the full walkthrough. What follows is the complete flag reference and deployment guidance.
 
 ```bash
 gridshell-server [--port N] [--host HOST] [--idle-hours H] [--buffer-mb M]
