@@ -3,7 +3,7 @@
 ## Definitions
 
 - **The developer**: the developer of GridShell.
-- **The app**: the GridShell Google Sheets add-on.
+- **The app**: the GridShell Google Sheets™ add-on.
 - **Personal data**: information that identifies or can be used to identify a person, such as a name, email address, phone number, or home address.
 - **Google user data**: data the app is authorized to access through the Google permissions ("scopes") listed in the next section.
 
@@ -13,13 +13,13 @@ The app is authorized for the following scopes:
 
 - `spreadsheets.currentonly` - access to the contents of the one spreadsheet you have open when you run the app (cell values, formulas, formatting, charts, and so on), and only that spreadsheet. The app cannot see or touch any other file in your Google account. This content may include personal data, if you have put personal data in the spreadsheet.
 - `script.container.ui` - permission to show the sidebar and dialog the app's interface is built from, to run the app's code in your browser, and to receive what you enter into them. What you enter in Settings is saved as described under "Data retention and deletion". What you type in the terminal goes from your browser directly to your own server; it does not pass through the developer.
-- `userinfo.email` and `userinfo.profile` - basic account information (your name, email address, and profile picture). These scopes are included by default for every app listed on the Google Workspace Marketplace, which is why Google's install screen lists them. The app does not read, use, store, or transfer this information.
+- `userinfo.email` and `userinfo.profile` - basic account information (your name, email address, and profile picture). These scopes are included by default for every app listed on the Google Workspace™ Marketplace, which is why Google's install screen lists them. The app does not read, use, store, or transfer this information.
 
 The app does not request access to any other Google data (such as Drive or contacts), and it does not collect personal data.
 
 ## How the app works with that data
 
-The app gives you a terminal (a shell) inside Google Sheets. The shell runs on a terminal server that you install and run yourself, on a machine you choose; see [Introduction](../index.md) for the two-component architecture. The developer does not operate a shared backend, and no data passes through any server the developer controls.
+The app gives you a terminal (a shell) inside Google Sheets™. The shell runs on a terminal server that you install and run yourself, on a machine you choose; see [Introduction](../index.md) for the two-component architecture. The developer does not operate a shared backend, and no data passes through any server the developer controls.
 
 - The `script.container.ui` scope is what displays the shell's output in the sidebar and dialog, whatever that output is.
 - The `spreadsheets.currentonly` scope is what lets programs you run in the shell read or write the open spreadsheet, through a connection between the app and your own server. Whether a program touches the spreadsheet at all, and what it does with the data, depends entirely on the program you choose to run: a script you wrote, an AI agent or assistant, or any other tool. The app does not choose, inspect, or control those programs.

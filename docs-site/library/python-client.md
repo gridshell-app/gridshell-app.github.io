@@ -43,7 +43,7 @@ Each open spreadsheet runs its own, independent GridShell session - `/mcp` alway
 
 - **Only one document currently connected, no `session` given**: the server falls back to it automatically.
 - **More than one connected, no `session` given**: the server refuses the call (`GridShellError: Multiple clients connected and no session was specified`) rather than guessing.
-- **Running from inside a document's own embedded terminal**: the library reads `GRIDSHELL_SESSION` from the environment automatically, the same way `gridshell-mcp`/Claude Code does, and always targets that document.
+- **Running from inside a document's own embedded terminal**: the library reads `GRIDSHELL_SESSION` from the environment automatically, the same way `gridshell-mcp`/Claude™ Code does, and always targets that document.
 - **Running externally, targeting a specific document among several**: pass `session=<id>` explicitly; it always wins over the environment variable. Get the id by running `echo $env:GRIDSHELL_SESSION` (PowerShell) inside that document's own embedded shell. An explicit `session` also needs its matching `session_key` (the server rejects a session id on its own as unproven) - pass `session_key=<key>`, or leave it unset and set `GRIDSHELL_SESSION_KEY` in the environment instead, same `echo $env:GRIDSHELL_SESSION_KEY` pattern. Both env vars are already set together inside that document's own embedded shell, so a script launched from there needs neither passed explicitly.
 
 ## Beyond the built-in methods

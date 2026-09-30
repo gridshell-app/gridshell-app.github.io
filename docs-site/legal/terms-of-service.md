@@ -6,7 +6,7 @@ By installing the GridShell Sheets add-on, running the `gridshell` server, or ot
 
 ## The software
 
-GridShell consists of two components: a Google Sheets add-on (installed from the Workspace Marketplace) and a self-hosted server (the `gridshell` Python package, installed separately, run by you). See [Introduction](../index.md) for how they relate.
+GridShell consists of two components: a Google Sheets™ add-on (installed from the Workspace Marketplace) and a self-hosted server (the `gridshell` Python package, installed separately, run by you). See [Introduction](../index.md) for how they relate.
 
 ## Your content and data
 
@@ -22,7 +22,7 @@ You agree not to use GridShell to:
 
 ## Third-party services
 
-Your use of the Sheets add-on is also governed by Google's own terms for Workspace Marketplace apps and Apps Script. GridShell doesn't control the Google Sheets/Workspace platform and isn't responsible for its availability, changes, or policies.
+Your use of the Sheets add-on is also governed by Google's own terms for Workspace Marketplace apps and Apps Script. GridShell doesn't control the Google Sheets™/Workspace™ platform and isn't responsible for its availability, changes, or policies.
 
 ## Availability and changes
 

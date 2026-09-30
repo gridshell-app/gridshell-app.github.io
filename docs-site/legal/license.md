@@ -40,14 +40,14 @@ The same terms are also included as a `LICENSE` file in the [`gridshell` package
 
 ## The Sheets add-on (closed source)
 
-The GridShell Sheets add-on - the in-Sheets terminal UI, distributed only through the Google Workspace Marketplace - is closed source at this point. Its code isn't part of the public GridShell repository.
+The GridShell Sheets add-on - the in-Sheets terminal UI, distributed only through the Google Workspace™ Marketplace - is closed source at this point. Its code isn't part of the public GridShell repository.
 
 ```
 Copyright (c) 2026 The GridShell developers. All rights reserved.
 
-This software (the GridShell Google Sheets add-on) is proprietary. It is
+This software (the GridShell Google Sheets™ add-on) is proprietary. It is
 not licensed for reuse, modification, redistribution, or derivative works,
 and no rights are granted beyond ordinary use of the installed add-on
-through the Google Workspace Marketplace, under the GridShell Terms of
+through the Google Workspace™ Marketplace, under the GridShell Terms of
 Service.
 ```

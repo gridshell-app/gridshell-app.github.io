@@ -7,7 +7,7 @@ Before you start: GridShell's Sheets add-on is a client - it needs a running Gri
 
 ## Install the add-on
 
-1. Open a Google Sheet.
+1. Open a Google Sheet™.
 2. Extensions → Add-ons → Get add-ons, search for **GridShell**, install it.
 3. Reload the spreadsheet. A **GridShell** menu appears (under Extensions, or as its own top-level menu depending on your Workspace settings).
 
@@ -30,7 +30,7 @@ Settings take effect the next time you open a shell, not retroactively on one al
 - **Close the dialog without stopping the shell**: just close the dialog window. The shell keeps running on the server (subject to the server's idle-kill timer, 12 hours by default) - reopen it later from the same row.
 - **Kill a shell**: hover its row and click the bin icon. This terminates the shell process immediately and removes it from the list - not reversible.
 - **Close everything at once**: GridShell menu → **Close all sessions**.
-- **Rows can be dragged to reorder**: a shell's row label updates automatically from the shell's own reported window title (e.g. it'll say "claude" once you launch Claude Code inside it), unless you've turned that off in Settings.
+- **Rows can be dragged to reorder**: a shell's row label updates automatically from the shell's own reported window title (e.g. it'll say "claude" once you launch Claude™ Code inside it), unless you've turned that off in Settings.
 
 ## What you can't do (yet)
 
