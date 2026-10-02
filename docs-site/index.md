@@ -1,7 +1,7 @@
 # Introduction
 
 !!! note
-    The GridShell Sheets add-on is currently pending review for the Google Workspace™ Marketplace and isn't installable yet. The rest of this documentation, and the open-source library it depends on, are already available in the meantime - this note comes down once the add-on is approved.
+    The GridShell Sheets add-on is available on the [Google Workspace™ Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795).
 
 ## What GridShell is
 GridShell gives you a real terminal, live-bound to an open Google Sheets™ spreadsheet, that any AI agent you already run can drive directly. GridShell doesn't run or host any AI model itself, and never sees your spreadsheet data - you bring the agent (Claude™ Code, Codex™, Antigravity™, OpenCode™, or any other CLI agent that speaks MCP, local or backed by its own vendor's API), GridShell only bridges it to the sheet. You can manipulate the sheet through structured calls, either using an [AI agent](library/mcp.md) or running [Python scripts](library/python-client.md) directly, and in contrast to "external" REST API or MCP integrations, you can also point the calls at whatever is currently selected. This way you can build a spreadsheet iteratively - try something, look at the result, and adjust - rather than relying on a one-shot script and hoping it's right.
@@ -12,7 +12,7 @@ Any MCP-compatible CLI agent can drive it, including a locally-hosted one, not j
 
 Using GridShell requires two components running together:
 
-- **The GridShell app** (installed from the Google Workspace Marketplace) provides the in-Sheets terminal UI, session management, and settings.
+- **The GridShell app** (installed from the [Google Workspace Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795)) provides the in-Sheets terminal UI, session management, and settings.
 - **A self-hosted server** (the GridShell Python library, installed via PyPI) provides the actual shell and the MCP relay the agent connects to.
 
 The app installs in a few clicks, while the server is something you run yourself, on infrastructure you choose - one per user, never a shared backend GridShell operates on your behalf. It's also open source (MIT), so you can read exactly what it does, adapt it to your own security requirements, or build your own tools on top of it, rather than taking a privacy claim on faith. The app itself, distributed only through the Google Workspace Marketplace, is closed source at this point. See [License](legal/license.md) for the full terms of both, [GridShell App](app/quick-start.md) for installing and using the add-on, and [GridShell Library](library/installation.md) for installing and running the server.

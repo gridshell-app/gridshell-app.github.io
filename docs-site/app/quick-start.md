@@ -7,8 +7,8 @@ Before you start: GridShell's Sheets add-on is a client - it needs a running Gri
 
 ## Install the add-on
 
-1. Open a Google Sheet™.
-2. Extensions → Add-ons → Get add-ons, search for **GridShell**, install it.
+1. Open the [GridShell listing on the Google Workspace™ Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795) and click Install, or open a Google Sheet™ and use Extensions → Add-ons → Get add-ons, search for **GridShell**, install it.
+2. Open a Google Sheet.
 3. Reload the spreadsheet. A **GridShell** menu appears (under Extensions, or as its own top-level menu depending on your Workspace settings).
 
 Until you've saved a server address (next section), opening GridShell shows a short welcome dialog with setup pointers. It goes away for good once you save one.

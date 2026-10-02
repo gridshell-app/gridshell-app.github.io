@@ -12,7 +12,7 @@ All three install together - there's no slimmed-down variant, by design.
 
 - **Python 3.11 or later.** This floor is forced by the `websockets` dependency, whose current releases don't support anything older. Check your Python version first (`python3 --version`).
 - **Windows™, Linux™, and macOS™ are all supported** - the PTY backend is `pywinpty` (ConPTY) on Windows and `ptyprocess` on Linux/macOS, selected automatically. Testing coverage differs by platform and deployment shape - see [Platform support](server.md#platform-support) for the honest breakdown before picking one for a remote deployment.
-- **This package is the *server-side* half only.** It doesn't include the Sheets add-on itself - install that separately from the [Google Workspace™ Marketplace](../app/quick-start.md).
+- **This package is the *server-side* half only.** It doesn't include the Sheets add-on itself - install that separately from the [Google Workspace™ Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795).
 
 ## Install
 
