@@ -59,6 +59,10 @@ A shell's process survives closing its dialog - that's what makes it safe to clo
 
 **Being listed in the sidebar does not, by itself, keep a shell alive.** The sidebar only tracks that a shell exists and keeps its own sheet-access connection open, independent of the dialog-side idle clock. For a long-running task to survive an extended gap (an overnight run, a laptop that'll sleep), the shell's dialog needs to reconnect within the idle window - being listed isn't enough on its own.
 
+## Known display quirks
+
+Some visual quirks may appear when you resize a live shell's dialog, meaning one that already shows some prompts or output. Typical examples are stray characters, misplaced or missing lines, or leftover fragments of earlier output after making the window smaller or larger. We will try to address these in future releases.
+
 ## Accessibility
 
 - **Screen reader mode's Shift+Tab tradeoff.** With screen reader mode on, Shift+Tab always moves keyboard focus out of the terminal, rather than reaching the shell's own tab-completion. This is a deliberate accessibility tradeoff in the underlying terminal component, not a bug.
