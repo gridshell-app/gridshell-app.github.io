@@ -99,6 +99,13 @@ The spawned shell inherits the **full environment** of the `gridshell-server` pr
 
 Ctrl+C (or a plain `kill` on Linux/Mac) cleanly terminates every shell currently running before the process exits. A hard crash or a forceful kill (Task Manager "End Task", `taskkill /F`, `kill -9`) does not, as no code runs in that case, so a shell that was active at that moment can keep running as an orphaned process, invisible to a freshly started server (a reattach for its session id just spawns a new shell instead of finding it). If this happens, find and end the orphaned process manually (Task Manager / `ps` + `kill`) - there's no in-app way to recover it.
 
+## Updating the server
+
+The add-on updates itself, but the server is a package you install, so it only changes when you update it: `pip install -U gridshell`, then restart the server. An older server keeps working with the current add-on, but some improvements (smoother resizing and reattaching, and cleanup of leftover shells) need a newer server.
+
+When a shell connects, the server tells the add-on a small number, its protocol level. The add-on compares that number, inside your browser, with the one built into it, and if the server is behind (or is too old to announce one) it adds "a newer server is available" to the dialog's status line. That is the whole mechanism. The add-on does not look up the latest release anywhere, and nothing about your server or its version is sent to the developer or to any other service: the number only travels between your own server and your own browser.
+
+
 ## Platform support
 
 Testing coverage is real but uneven across platforms and deployment shapes - not "all three, fully," so here's the honest breakdown. The automated test suite is designed to run against a fake PTY process on any platform (`FakePtyProcess` in `tests/test_conformance.py`). There's no CI configured in this repo yet, so that's currently exercised manually rather than continuously, on whichever platform is running it. It verifies session bookkeeping - attach/reattach/idle-kill/buffer-replay, and the auth-frame/token handling - independent of the real shell backend; it does not exercise `pywinpty`, `ptyprocess`, or `--wss`/TLS on any platform. The platform and deployment coverage below comes from manual testing, not CI.

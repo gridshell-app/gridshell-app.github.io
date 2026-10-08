@@ -23,6 +23,7 @@ The app gives you a terminal (a shell) inside Google Sheets. The shell runs on a
 
 - The `script.container.ui` scope is what displays the shell's output in the sidebar and dialog, whatever that output is.
 - The `spreadsheets.currentonly` scope is what lets programs you run in the shell read or write the open spreadsheet, through a connection between the app and your own server. Whether a program touches the spreadsheet at all, and what it does with the data, depends entirely on the program you choose to run: a script you wrote, an AI agent or assistant, or any other tool. The app does not choose, inspect, or control those programs.
+- The dialog can show a note that a newer server is available. Your server reports a protocol level (a small number) to your own browser session when a shell connects, and the comparison happens in your browser. Nothing about your server or its version is sent to the developer or to any other party.
 - The terminal's display library (xterm) is loaded by your browser directly from a public CDN (jsDelivr), and the interface also loads Google's own stylesheets and fonts. These requests are made by your browser and carry no spreadsheet data.
 
 ## Use, sharing, and transfer

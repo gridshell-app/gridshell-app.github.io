@@ -61,7 +61,15 @@ A shell's process survives closing its dialog - that's what makes it safe to clo
 
 ## Known display quirks
 
-Some visual quirks may appear when you resize a live shell's dialog, meaning one that already shows some prompts or output. Typical examples are stray characters, misplaced or missing lines, or leftover fragments of earlier output after making the window smaller or larger. We will try to address these in future releases.
+Resizing means closing a shell's dialog and reopening it at a different size (see the width and height settings). With the latest server, the existing output follows the new size cleanly. With an older server, a shell that already shows some prompts or output can show stray characters, misplaced or missing lines, or leftover fragments of earlier output after the size changes; the dialog's status line tells you when a newer server is available (see [Updating the server](../library/server.md#updating-the-server)).
+
+A program that draws a panel taller than the dialog can leave duplicated lines of its own header behind when the panel closes (seen, for example, with the `/usage` panel of Claude Code™). That comes from the program, not from GridShell, and a taller dialog avoids it.
+
+With the Light theme, a shell's inline suggestion text (such as PowerShell's predictions) is shown in dark gray and in italics. For plain black text, add this to your PowerShell profile:
+
+```powershell
+Set-PSReadLineOption -Colors @{ InlinePrediction = "`e[30m" }
+```
 
 ## Accessibility
 
