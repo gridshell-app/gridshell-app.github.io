@@ -27,7 +27,7 @@ Settings take effect the next time you open a shell, not retroactively on one al
 
 - **Open a new shell**: click **+ New shell** in the sidebar. GridShell is capped at 2 concurrent shells per document in the free tier and the button disables once you hit the cap.
 - **Reattach to a running shell**: click its row in the **Opened shells** list. This reopens the same session and whatever was running keeps running, nothing restarts.
-- **Close the dialog without stopping the shell**: just close the dialog window. The shell keeps running on the server (subject to the server's idle-kill timer, 12 hours by default) - reopen it later from the same row.
+- **Close the dialog without stopping the shell**: just close the dialog window. The shell keeps running on the server - reopen it later from the same row. It is only killed once its connection has been lost (for example the sheet was closed) for the server's idle-kill time, 12 hours by default.
 - **Kill a shell**: hover its row and click the bin icon. This terminates the shell process immediately and removes it from the list - not reversible.
 - **Close everything at once**: GridShell menu → **Close all sessions**.
 - **Rows can be dragged to reorder**: a shell's row label updates automatically from the shell's own reported window title (e.g. it'll say "claude" once you launch Claude™ Code inside it), unless you've turned that off in Settings.

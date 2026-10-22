@@ -55,13 +55,15 @@ Turning it off requires a confirmation every time:
 
 ## Shell idle timeout
 
-A shell's process survives closing its dialog - that's what makes it safe to close and declutter while an agent keeps working (see [Quick Start](quick-start.md)), but not indefinitely. The clock starts the moment its dialog **disconnects**, for any reason (closing it, your machine sleeping, a network drop, a crashed tab), and the server kills the shell once that reaches 12 hours by default (the person running your server can change this, see [Server: flags](../library/server.md)). Reopening the dialog within that window reattaches you to the still-running shell with its history intact; past it, reopening just starts a fresh one.
+A shell's process survives closing its dialog - that's what makes it safe to close and declutter while an agent keeps working (see [Quick Start](quick-start.md)), but not indefinitely. The clock starts when its dialog loses its connection to the server (you close or reload the sheet tab, quit the browser, your machine sleeps, or the network drops), not when you close the dialog window, and the server kills the shell once that reaches 12 hours by default (the person running your server can change this, see [Server: flags](../library/server.md)). Reopening the dialog within that window reattaches you to the still-running shell with its history intact; past it, reopening just starts a fresh one.
 
 **Being listed in the sidebar does not, by itself, keep a shell alive.** The sidebar only tracks that a shell exists and keeps its own sheet-access connection open, independent of the dialog-side idle clock. For a long-running task to survive an extended gap (an overnight run, a laptop that'll sleep), the shell's dialog needs to reconnect within the idle window - being listed isn't enough on its own.
 
 ## Known display quirks
 
 Resizing means closing a shell's dialog and reopening it at a different size (see the width and height settings). With the latest server, the existing output follows the new size cleanly. With an older server, a shell that already shows some prompts or output can show stray characters, misplaced or missing lines, or leftover fragments of earlier output after the size changes; the dialog's status line tells you when a newer server is available (see [Updating the server](../library/server.md#updating-the-server)).
+
+Output a program formats itself to the old width (PowerShell errors, tables) keeps that width and does not reflow when the size changes; plain long text reflows. On Windows, keeping the cursor on the right line after a size change also needs the latest server: with an older one, text typed right after a resize can land on a line above the prompt until the next prompt appears.
 
 A program that draws a panel taller than the dialog can leave duplicated lines of its own header behind when the panel closes (seen, for example, with the `/usage` panel of Claude Code™). That comes from the program, not from GridShell, and a taller dialog avoids it.
 
