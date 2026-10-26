@@ -49,6 +49,10 @@ The app does not store Google user data; it only relays it between the spreadshe
 
 The app's use and transfer of information received from Google APIs to any other app will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
+## This website
+
+This website (gridshell.app) uses Cloudflare Web Analytics to count page visits. It sets no cookies and does not track individual visitors across sites.
+
 ## Contact
 
 gridshell.app@gmail.com. If you email this address or open a GitHub issue, the details you choose to include are received by the developer only for the purpose of responding.

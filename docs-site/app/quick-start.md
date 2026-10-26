@@ -1,5 +1,7 @@
 # Quick Start
 
+A walkthrough with screenshots is in the article [Bring your own AI agent to Google Sheets](https://medium.com/@ulasevichr/bring-your-own-ai-agent-to-google-sheets-355944b32342) on Medium.
+
 Before you start: GridShell's Sheets add-on is a client - it needs a running GridShell server to connect to. If you don't have one yet, see [Installing the Library](../library/installation.md) and [Running the server](../library/server.md) first; anyone on your team can run the server, it doesn't need to be you.
 
 !!! note "You run the server, and it makes its own credentials"

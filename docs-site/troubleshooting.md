@@ -9,6 +9,9 @@ Browsers block a plain `ws://` connection from an `https://`-loaded page (Google
 **`pip install gridshell` or `gridshell-mcp` fails, or import errors mention `mcp` or `websockets`.**
 Check your Python version - `python3 --version`. GridShell needs Python 3.11 or later, because its `websockets` dependency doesn't support anything older.
 
+**On Windows, the cursor ends up in the wrong place after I resize a shell.**
+This was seen with `gridshell` 1.0.0b4 and earlier. Check your version with `pip show gridshell`, update the server with `pip install -U gridshell`, and restart it. Mac and Linux are not affected.
+
 **"Address already in use" / the server won't start on the port I expected.**
 Something else is already listening on that port. Pick a different one with `--port`.
 

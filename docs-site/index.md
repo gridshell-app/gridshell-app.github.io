@@ -1,7 +1,9 @@
 # Introduction
 
 !!! note
-    The GridShell Sheets add-on is available on the [Google Workspace™ Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795).
+    - **Add-on:** available on the [Google Workspace™ Marketplace](https://workspace.google.com/marketplace/app/gridshell/656676222795).
+    - **Walkthrough:** the article [Bring your own AI agent to Google Sheets](https://medium.com/@ulasevichr/bring-your-own-ai-agent-to-google-sheets-355944b32342) on Medium, with screenshots.
+    - **Latest server release:** 1.0.0b5 ([PyPI](https://pypi.org/project/gridshell/)). To check yours, run `pip show gridshell`.
 
 ## What GridShell is
 GridShell gives you a real terminal, live-bound to an open Google Sheets™ spreadsheet, that any AI agent you already run can drive directly. GridShell doesn't run or host any AI model itself, and never sees your spreadsheet data - you bring the agent (Claude™ Code, Codex™, Antigravity™, OpenCode™, or any other CLI agent that speaks MCP, local or backed by its own vendor's API), GridShell only bridges it to the sheet. You can manipulate the sheet through structured calls, either using an [AI agent](library/mcp.md) or running [Python scripts](library/python-client.md) directly, and in contrast to "external" REST API or MCP integrations, you can also point the calls at whatever is currently selected. This way you can build a spreadsheet iteratively - try something, look at the result, and adjust - rather than relying on a one-shot script and hoping it's right.
